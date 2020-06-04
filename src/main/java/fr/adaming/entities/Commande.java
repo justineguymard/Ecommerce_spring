@@ -33,18 +33,25 @@ public class Commande implements Serializable {
 		super();
 	}
 
-	public Commande(Date dateCommande, Client client) {
+	
+	
+	
+	public Commande(Date dateCommande) {
 		super();
 		this.dateCommande = dateCommande;
-		this.client = client;
 	}
 
-	public Commande(int idCommande, Date dateCommande, Client client) {
+
+
+
+	public Commande(int idCommande, Date dateCommande) {
 		super();
 		this.idCommande = idCommande;
 		this.dateCommande = dateCommande;
-		this.client = client;
 	}
+
+
+
 
 	public int getIdCommande() {
 		return idCommande;

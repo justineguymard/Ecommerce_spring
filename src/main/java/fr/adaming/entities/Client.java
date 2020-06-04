@@ -50,15 +50,14 @@ public class Client implements Serializable {
 	}
 
 
-	public Client(int idClient, String nomClient, String adresse, String email, String tel,
-			List<Commande> listeCommandes) {
+	public Client(int idClient, String nomClient, String adresse, String email, String tel) {
 		super();
 		this.idClient = idClient;
 		this.nomClient = nomClient;
 		this.adresse = adresse;
 		this.email = email;
 		this.tel = tel;
-		this.listeCommandes = listeCommandes;
+		
 	}
 
 
