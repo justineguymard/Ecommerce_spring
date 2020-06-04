@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -34,11 +35,13 @@ public class Produit implements Serializable {
 	@JoinColumn(name = "categorie_id", referencedColumnName = "id_categorie")
 	private Categorie categorie;
 
-	@ManyToMany(mappedBy = "listeProduit")
+	@(mappedBy = "listeProduit")
 	private List<Commande> listeCommande;
 
-	@ManyToMany(mappedBy = "listeProduit")
+	@OneToMany(mappedBy = "produit")
 	private List<LigneCommande> listeLigneCommande;
+	
+	
 
 	// constructeur
 	public Produit() {
