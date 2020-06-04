@@ -22,6 +22,7 @@ public class Categorie implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_categorie")
 	private Long idCategorie;
+	@Column(name = "nom_categorie")
 	private String nomCategorie;
 	private String photo;
 	private String description;

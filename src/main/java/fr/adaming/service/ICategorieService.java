@@ -1,10 +1,10 @@
-package fr.adaming.dao;
+package fr.adaming.service;
 
 import java.util.List;
 
 import fr.adaming.entities.Categorie;
 
-public interface ICategorieDao {
+public interface ICategorieService {
 
 	public List<Categorie> getAllCategorie();
 

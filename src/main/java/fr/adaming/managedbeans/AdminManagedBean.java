@@ -14,6 +14,7 @@ import fr.adaming.entities.Admin;
 import fr.adaming.entities.Categorie;
 import fr.adaming.entities.Produit;
 import fr.adaming.service.IAdminService;
+import fr.adaming.service.ICategorieService;
 
 @ManagedBean(name = "adminMB")
 @RequestScoped
@@ -130,6 +131,23 @@ public class AdminManagedBean implements Serializable {
 		} else {
 			return "1_adminLogin";
 		}
+	}
+	
+	public String seDeconnecter() {
+		// fermer la session actuelle du conseiller
+		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+
+		// ajouter le message utilisateur pour l'echec de connexion
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Vous êtes déconnectés !"));
+
+		return "1_adminLogin";
+	}
+	
+	public String closeAppli() {
+		// fermer la session actuelle du conseiller
+		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+		
+		return "0_accueilSite";
 	}
 	
 	public String addCategorie() {
