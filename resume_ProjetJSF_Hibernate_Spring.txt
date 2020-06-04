@@ -1,0 +1,30 @@
+1- Creation d'un projet maven
+
+2- configuer le pom.xml du projet (declaration des libs) et update le projet maven
+
+3- generer les fichiers de config de notre projet (web.xml et faces-config.xml)
+
+4- developpement de la couche modele (entities)
+
+5- faire le mapping objet/Relationnel via les annotation JPA
+
+6- generer le fichier de config de conteneur spring IoC (application-context.xml)
+		- Activation des annotations d'injection de dependaces
+		- Activation de la detection automatique des composants
+		- Definir le bean dataSource: qui encapsule les infos de la connexion à la bd
+		- Definir le bean SessionFactoryBean, lui injecter le datasourceBean, specifer les 
+							sclasses persistantes et specifier les props de hibernate
+		- Definir le bean TransactionManeger et lui injecter le bean sessionFactory pour
+							 gerer les transaction sql
+		- Activation des annotation des transactions
+
+7- Configuerer le faces-config afin d'integerer jsf avec le conteneur spring IOC: forcer le contener 
+		web à faire la difference entre  EL de spring et EL de JSF
+		
+8- Configuer le fichier web.xml: 
+		- declaration et le mapping de la servlet unique de jsf
+		- Definir la page de lancement de mon projet
+		- configuer le conteneur web afin qu'il charge le context du conteneur spring IoC, en declarant 
+				un listner et en specifiant le chemin du fichier de config de spring IoC (application-context.xml)
+ 
+9- Developpement des couches traitement (dao +service + presentation) 
