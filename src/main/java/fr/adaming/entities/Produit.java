@@ -35,9 +35,6 @@ public class Produit implements Serializable {
 	@JoinColumn(name = "categorie_id", referencedColumnName = "id_categorie")
 	private Categorie categorie;
 
-	@(mappedBy = "listeProduit")
-	private List<Commande> listeCommande;
-
 	@OneToMany(mappedBy = "produit")
 	private List<LigneCommande> listeLigneCommande;
 	
@@ -134,14 +131,6 @@ public class Produit implements Serializable {
 
 	public void setCategorie(Categorie categorie) {
 		this.categorie = categorie;
-	}
-
-	public List<Commande> getListeCommande() {
-		return listeCommande;
-	}
-
-	public void setListeCommande(List<Commande> listeCommande) {
-		this.listeCommande = listeCommande;
 	}
 
 	public List<LigneCommande> getListeLigneCommande() {

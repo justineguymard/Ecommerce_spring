@@ -34,6 +34,7 @@ public class Commande implements Serializable {
 	@OneToMany(mappedBy="commande")
 	private List <LigneCommande> listeLignesCommandes;
 	
+	
 	public Commande() {
 		super();
 	}

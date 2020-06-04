@@ -27,7 +27,8 @@ public class LigneCommande implements Serializable {
 
 
 	//transformation UML en JAVA
-	@Many
+	@ManyToOne
+	@JoinColumn(name="produit_id",referencedColumnName="id_produit")
 	private Produit produit;
 	
 	@ManyToOne
@@ -45,6 +46,63 @@ public class LigneCommande implements Serializable {
 		this.quantite = quantite;
 		this.prix = prix;
 	}
+
+	public LigneCommande(int id, int quantite, int prix) {
+		super();
+		this.id = id;
+		this.quantite = quantite;
+		this.prix = prix;
+	}
+	
+	
+	//getters et setters
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getQuantite() {
+		return quantite;
+	}
+
+	public void setQuantite(int quantite) {
+		this.quantite = quantite;
+	}
+
+	public int getPrix() {
+		return prix;
+	}
+
+	public void setPrix(int prix) {
+		this.prix = prix;
+	}
+
+	public Produit getProduit() {
+		return produit;
+	}
+
+	public void setProduit(Produit produit) {
+		this.produit = produit;
+	}
+
+	public Commande getCommande() {
+		return commande;
+	}
+
+	public void setCommande(Commande commande) {
+		this.commande = commande;
+	}
+
+	//tostring
+	@Override
+	public String toString() {
+		return "LigneCommande [id=" + id + ", quantite=" + quantite + ", prix=" + prix + "]";
+	}
+	
+	
 	
 	
 	
