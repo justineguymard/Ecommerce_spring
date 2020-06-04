@@ -2,14 +2,26 @@ package fr.adaming.entities;
 
 import java.io.Serializable;
 
-public class Admin implements Serializable{
-	
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "admins")
+public class Admin implements Serializable {
+
+	// attributs
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_admin")
 	private int id;
-	
 	private String mail;
-	
 	private String mdp;
 
+	// constructeur
 	public Admin() {
 		super();
 	}
@@ -20,6 +32,14 @@ public class Admin implements Serializable{
 		this.mdp = mdp;
 	}
 
+	public Admin(int id, String mail, String mdp) {
+		super();
+		this.id = id;
+		this.mail = mail;
+		this.mdp = mdp;
+	}
+
+	// getter et setters
 	public int getId() {
 		return id;
 	}
@@ -44,12 +64,10 @@ public class Admin implements Serializable{
 		this.mdp = mdp;
 	}
 
+	// redef
 	@Override
 	public String toString() {
 		return "Admin [id=" + id + ", mail=" + mail + ", mdp=" + mdp + "]";
-	} 
-	
-	
-	
+	}
 
 }

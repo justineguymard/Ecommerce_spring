@@ -10,29 +10,31 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
-import fr.adaming.entities.Etudiant;
-import fr.adaming.entities.Formateur;
-import fr.adaming.service.IEtudiantService;
+import fr.adaming.entities.Admin;
+import fr.adaming.entities.Categorie;
+import fr.adaming.entities.Produit;
 
-@ManagedBean(name = "eMB")
+@ManagedBean(name = "adminMB")
 @RequestScoped
-public class EtudiantManagedBean implements Serializable {
+public class AdminManagedBean implements Serializable {
 
 	// DEclaration des attributs du managedBeans qui vont ecapsuler le modele
 	// MVC2
-	private List<Etudiant> etudiants;
-
-	private Formateur prof;
-
-	private Etudiant etudiant;
+	private Admin admin;
+	private Categorie categorie;
+	private List<Categorie> listeCategorie;
+	private Produit produit;
+	private List<Produit> listeProduit;
 
 	private boolean indice;
 
 	// Transformation de l'association UML en JAVA
-	@ManagedProperty(value = "#{eService}")
-	private IEtudiantService etudiantService;
+	@ManagedProperty(value = "#{categorieService}")
+	private ICategorieService categorieService;
+	@ManagedProperty(value = "#{produitService}")
+	private IProduitService produitService;
 
-	public EtudiantManagedBean() {
+	public AdminManagedBean() {
 		super();
 	}
 
