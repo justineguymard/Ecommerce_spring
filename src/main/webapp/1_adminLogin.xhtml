@@ -49,8 +49,6 @@
 	<div
 		style="display: flex; justify-content: center; width: 50%; margin: auto; margin-top: 200px;">
 		<h:form>
-			<p:growl id="growl" sticky="true" showDetail="true" />
-			<p:wizard flowListener="#{userWizard.onFlowProcess}">
 
 				<p:tab id="contact">
 					<p:panel header="Connexion">
@@ -63,11 +61,9 @@
 							<h:outputText value="Mot-de-passe: *" />
 							<p:inputText value="#{adminMB.admin.mdp}" />
 						</h:panelGrid>
-						<p:commandButton value="Valider" action="#{adminMB.toLogIn}" />
+						<p:commandButton value="Valider" action="#{adminMB.seConnecter}" />
 					</p:panel>
 				</p:tab>
-
-			</p:wizard>
 		</h:form>
 	</div>
 

@@ -23,7 +23,7 @@ public class LigneCommande implements Serializable {
 	@Column(name="id_lignecommande")
 	private int id;
 	private int quantite;
-	private int prix;
+	private double prix;
 
 
 	//transformation UML en JAVA
@@ -72,11 +72,11 @@ public class LigneCommande implements Serializable {
 		this.quantite = quantite;
 	}
 
-	public int getPrix() {
+	public double getPrix() {
 		return prix;
 	}
 
-	public void setPrix(int prix) {
+	public void setPrix(double prix) {
 		this.prix = prix;
 	}
 
