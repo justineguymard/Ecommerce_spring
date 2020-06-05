@@ -1,5 +1,7 @@
 package fr.adaming.entities;
 
-public class Panier {
+import java.io.Serializable;
+
+public class Panier implements Serializable {
 
 }
