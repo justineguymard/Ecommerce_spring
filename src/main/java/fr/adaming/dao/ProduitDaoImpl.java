@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import fr.adaming.entities.Categorie;
 import fr.adaming.entities.Produit;
 
 @Repository
@@ -99,7 +100,7 @@ public class ProduitDaoImpl implements IProduitDao {
 	}
 
 	@Override
-	public List<Produit> searchProduitByCategorie(Produit produit) {
+	public List<Produit> searchProduitByCategorie(Categorie categorie) {
 
 		// recuperer la session d'hibernate
 		Session s = sf.getCurrentSession();
@@ -112,7 +113,7 @@ public class ProduitDaoImpl implements IProduitDao {
 			Query query = s.createQuery(req);
 
 			// passage des params
-			query.setParameter("pNomCat", produit.getCategorie().getNomCategorie());
+			query.setParameter("pNomCat", categorie.getNomCategorie());
 
 			return query.list();
 
@@ -123,20 +124,20 @@ public class ProduitDaoImpl implements IProduitDao {
 	}
 
 	@Override
-	public Produit searchProduitByName(Produit produit) {
+	public List<Produit> searchProduitByName(String motCle) {
 
 		// recuperer la session d'hibernate
 		Session s = sf.getCurrentSession();
 
 		try {
 
-			String reqOneHQL = "FROM Produit p WHERE p.designation=:pDesignation";
+			String req = "FROM Produit p WHERE p.designation like :sf";
 
-			Query queryOneHQL = s.createQuery(reqOneHQL);
+			Query query = s.createQuery(req);
 
-			queryOneHQL.setParameter("pDesignation", produit.getDesignation());
+			query.setString("sf", '%'+motCle+'%');
 
-			return (Produit) queryOneHQL.uniqueResult();
+			return query.list();
 
 		} catch (Exception e) {
 			e.printStackTrace();

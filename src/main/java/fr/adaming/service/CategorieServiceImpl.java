@@ -30,14 +30,8 @@ public class CategorieServiceImpl implements ICategorieService {
 
 	@Override
 	public int addCategorie(Categorie categorie) {
-
-		Categorie categorieOut = categorieDao.searchCategorieByName(categorie);
-
-		if (categorieOut == null) {
-			// appel de la méthode dao
-			return categorieDao.updateCategorie(categorie);
-		}
-		return 0;
+		// appel de la méthode dao
+		return categorieDao.addCategorie(categorie);
 	}
 
 	@Override
@@ -48,14 +42,8 @@ public class CategorieServiceImpl implements ICategorieService {
 
 	@Override
 	public int deleteCategorie(Categorie categorie) {
-
-		Categorie categorieOut = categorieDao.searchCategorieByName(categorie);
-
-		if (categorieOut != null) {
-			// appel de la méthode dao
-			return categorieDao.updateCategorie(categorie);
-		}
-		return 0;
+		// appel de la méthode dao
+		return categorieDao.deleteCategorie(categorie);
 	}
 
 	@Override
