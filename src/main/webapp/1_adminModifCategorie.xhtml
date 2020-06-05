@@ -11,23 +11,26 @@
 	<title>Facelet Modif</title>
 </h:head>
 <h:body>
+
 	<h:form>
 		<p:breadCrumb>
-			<p:menuitem value="Accueil" url="accueil.xhtml" />
-			<p:menuitem value="Ajouter" url="ajout.xhtml" />
-			<p:menuitem value="Modifier" url="modif.xhtml" />
-			<p:menuitem value="Supprimer" url="suppression.xhtml" />
-			<p:menuitem value="Rechercher" url="recherche.xhtml" />
+			<p:menuitem value="Consultation" url="1_adminConsultation.xhtml" />
+			<p:menuitem value="AjoutCategorie" url="1_adminAjoutCategorie.xhtml" />
+			<p:menuitem value="AjoutProduit" url="1_adminAjoutProduit.xhtml" />
+			<p:menuitem value="ModifCategorie" url="1_adminModifCategorie.xhtml" />
+			<p:menuitem value="ModifProduit" url="1_adminModifProduit.xhtml" />
+			<p:menuitem value="SupprCategorie" url="1_adminSupprCategorie.xhtml" />
+			<p:menuitem value="SupprProduit" url="1_adminSupprProduit.xhtml" />
 		</p:breadCrumb>
 	</h:form>
 
 	<h:form>
 		<h:panelGrid columns="2">
-			ID: <p:inputText value="#{eMB.etudiant.id}" />
-			Nom: <p:inputText value="#{eMB.etudiant.nom}" />
-			Prenom: <p:inputText value="#{eMB.etudiant.prenom}" />
-			Date : <p:calendar value="#{eMB.etudiant.dn}" />
-			<h:commandButton value="Modifier" action="#{eMB.modifier}" />
+			ID: <p:inputText value="#{categorieMB.categorie.idCategorie}" />
+			Nom: <p:inputText value="#{categorieMB.categorie.nomCategorie}" />
+			Photo: <p:inputText value="#{categorieMB.categorie.photo}" />
+			Description: <p:inputText value="#{categorieMB.categorie.description}" />
+			<h:commandButton value="Modifier" action="#{categorieMB.updateCategorie}" />
 		</h:panelGrid>
 	</h:form>
 	<h:messages />

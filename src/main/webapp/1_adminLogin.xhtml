@@ -50,6 +50,7 @@
 		style="display: flex; justify-content: center; width: 50%; margin: auto; margin-top: 200px;">
 		<h:form>
 
+
 				<p:tab id="contact">
 					<p:panel header="Connexion">
 						<p:messages />
@@ -61,9 +62,12 @@
 							<h:outputText value="Mot-de-passe: *" />
 							<p:inputText value="#{adminMB.admin.mdp}" />
 						</h:panelGrid>
-						<p:commandButton value="Valider" action="#{adminMB.seConnecter}" />
+
+						<h:commandButton value="Valider" action="#{adminMB.seConnecter}" ></h:commandButton>
 					</p:panel>
 				</p:tab>
+
+			
 		</h:form>
 	</div>
 

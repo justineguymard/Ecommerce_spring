@@ -115,9 +115,13 @@ public class CategorieManagedBean {
 		this.categorieService = categorieService;
 	}
 
+	public void setProduitService(IProduitService produitService) {
+		this.produitService = produitService;
+	}
+
 	// ==========================================================================
 	// Les méthodes métier du ManagedBean
-	
+
 	public String addCategorie() {
 		// Appel de la méthode add de Service(Etudiant)
 		int categorieOut = categorieService.addCategorie(categorie);
@@ -132,7 +136,7 @@ public class CategorieManagedBean {
 			return "1_adminAjoutCategorie";
 		}
 	}
-	
+
 	public String updateCategorie() {
 		// appel de la methode update de service
 		int verif = categorieService.updateCategorie(categorie);
@@ -149,7 +153,7 @@ public class CategorieManagedBean {
 			return "1_adminModifCategorie";
 		}
 	}
-	
+
 	public String deleteCategorie() {
 		int verif = categorieService.deleteCategorie(categorie);
 
@@ -165,7 +169,7 @@ public class CategorieManagedBean {
 			return "1_adminSupprCategorie";
 		}
 	}
-	
+
 	public String searchCategorieByName() {
 		// appel de la methode service
 		this.categorie = categorieService.searchCategorieByName(categorie);
@@ -180,28 +184,5 @@ public class CategorieManagedBean {
 
 		return "recherche";
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 }

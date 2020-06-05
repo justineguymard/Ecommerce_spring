@@ -5,6 +5,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import fr.adaming.entities.Admin;
 
@@ -19,6 +20,8 @@ public class AdminDaoImpl implements IAdminDao {
 	public void setSf(SessionFactory sf) {
 		this.sf = sf;
 	}
+	
+	@Transactional(readOnly = true)
 
 	@Override
 	public Admin toLogIn(Admin admin) {
