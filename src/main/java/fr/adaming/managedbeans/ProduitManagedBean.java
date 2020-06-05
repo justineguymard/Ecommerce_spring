@@ -124,7 +124,7 @@ public class ProduitManagedBean {
 
 	public String addProduit() {
 		// Appel de la méthode add de Service(Etudiant)
-		int produitOut = produitService.addProduit(produit);
+		int produitOut = produitService.addProduit(this.produit,this.categorie);
 
 		if (produitOut != 0) {
 			// Mettre à jour la liste des étudiants du prof
@@ -139,7 +139,7 @@ public class ProduitManagedBean {
 
 	public String updateProduit() {
 		// appel de la methode update de service
-		int verif = produitService.updateProduit(produit);
+		int verif = produitService.updateProduit(this.produit);
 
 		if (verif != 0) {
 			// Mettre à jour la liste des étudiants du prof
@@ -172,7 +172,7 @@ public class ProduitManagedBean {
 
 	public String searchProduitByCategorie() {
 		// appel de la methode service
-		this.listeProduit = produitService.searchProduitByCategorie(produit, categorie);
+		this.listeProduit = produitService.searchProduitByCategorie(categorie);
 
 		if (this.listeProduit != null) {
 			this.indice = true;

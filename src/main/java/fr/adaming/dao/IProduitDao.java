@@ -2,6 +2,7 @@ package fr.adaming.dao;
 
 import java.util.List;
 
+import fr.adaming.entities.Categorie;
 import fr.adaming.entities.Produit;
 
 public interface IProduitDao {
@@ -14,8 +15,8 @@ public interface IProduitDao {
 	
 	public int deleteProduit(Produit produit);
 	
-	public List<Produit> searchProduitByCategorie(Produit produit);
+	public List<Produit> searchProduitByCategorie(Categorie categorie);
 	
-	public Produit searchProduitByName(Produit produit);
+	public List<Produit> searchProduitByName(String motcle);
 
 }

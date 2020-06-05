@@ -15,8 +15,9 @@ public interface IProduitService {
 
 	public int deleteProduit(Produit produit);
 
-	public List<Produit> searchProduitByCategorie(Produit produit, Categorie categorie);
+	public List<Produit> searchProduitByCategorie(Categorie categorie);
 
 	public List<Produit>searchProduitByName(String motCle);
+
 
 }

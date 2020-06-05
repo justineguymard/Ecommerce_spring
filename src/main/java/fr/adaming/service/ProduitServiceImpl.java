@@ -30,15 +30,11 @@ public class ProduitServiceImpl implements IProduitService {
 	}
 
 	@Override
-	public int addProduit(Produit produit) {
+	public int addProduit(Produit produit, Categorie categorie) {
 		
-		Produit produitOut = produitDao.searchProduitByName(produit);
-
-		if (produitOut == null) {
-			// appel de la méthode dao
-			return produitDao.updateProduit(produit);
-		}
-		return 0;
+		produit.setCategorie(categorie);
+		
+		return produitDao.addProduit(produit);
 	}
 
 	@Override
@@ -49,31 +45,22 @@ public class ProduitServiceImpl implements IProduitService {
 
 	@Override
 	public int deleteProduit(Produit produit) {
-		
-		Produit produitOut = produitDao.searchProduitByName(produit);
-
-		if (produitOut != null) {
-			// appel de la méthode dao
-			return produitDao.updateProduit(produit);
-		}
-		return 0;
+		// appel de la méthode dao
+		return produitDao.deleteProduit(produit);
 	}
 
 	@Override
-	public List<Produit> searchProduitByCategorie(Produit produit, Categorie categorie) {
-		
-		// lier le produit avec la catégorie
-		produit.setCategorie(categorie);
+	public List<Produit> searchProduitByCategorie(Categorie categorie) {
 		
 		// appel de la méthode dao
-		return produitDao.searchProduitByCategorie(produit);
+		return produitDao.searchProduitByCategorie(categorie);
 	}
 
 	@Override
-	public Produit searchProduitByName(Produit produit) {
+	public List<Produit> searchProduitByName(String motCle) {
 		
 		// appel de la méthode dao
-		return produitDao.searchProduitByName(produit);
+		return produitDao.searchProduitByName(motCle);
 	}
 
 }
