@@ -15,7 +15,7 @@ import fr.adaming.entities.Produit;
 import fr.adaming.service.ICategorieService;
 import fr.adaming.service.IProduitService;
 
-@ManagedBean(name = "produitBean")
+@ManagedBean(name = "produitMB")
 @RequestScoped
 public class ProduitManagedBean {
 
@@ -113,6 +113,10 @@ public class ProduitManagedBean {
 	// le setter pour l'injection de dependance
 	public void setProduitService(IProduitService produitService) {
 		this.produitService = produitService;
+	}
+	
+	public void setCategorieService(ICategorieService categorieService) {
+		this.categorieService = categorieService;
 	}
 
 	// ==========================================================================

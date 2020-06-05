@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import fr.adaming.entities.Produit;
 
@@ -15,6 +16,8 @@ public class ProduitDaoImpl implements IProduitDao {
 
 	@Autowired
 	private SessionFactory sf;
+	
+	@Transactional(readOnly = true)
 
 	@Override
 	public List<Produit> getAllProduit() {

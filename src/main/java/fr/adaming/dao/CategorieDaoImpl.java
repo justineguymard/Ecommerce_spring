@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import fr.adaming.entities.Categorie;
 
@@ -15,6 +16,8 @@ public class CategorieDaoImpl implements ICategorieDao {
 
 	@Autowired
 	private SessionFactory sf;
+	
+	@Transactional(readOnly = true)
 
 	@Override
 	public List<Categorie> getAllCategorie() {
