@@ -1,10 +1,11 @@
-package fr.adaming.dao;
+package fr.adaming.service;
 
 import java.util.List;
 
 import fr.adaming.entities.Commande;
 
-public interface ICommandeDao {
+public interface ICommandeService {
+	
 	
 	public List<Commande> getAllCommandes ();
 	
@@ -17,8 +18,5 @@ public interface ICommandeDao {
 	public Commande searchCommandeByID (Commande commandeIn);
 	
 	public List<Commande> searchCommandeByDate (Commande commandeIn);
-	
-	
-	
 
 }

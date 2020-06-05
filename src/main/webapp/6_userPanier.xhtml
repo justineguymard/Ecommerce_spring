@@ -1,0 +1,62 @@
+template.xhtml<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Facelet Ajout</title>
+</h:head>
+<h:body>
+
+	<h:form>
+		<p:breadCrumb>
+			<p:menuitem value="Accueil" url="accueil.xhtml" />
+			<p:menuitem value="Ajouter" url="ajout.xhtml" />
+			<p:menuitem value="Modifier" url="modif.xhtml" />
+			<p:menuitem value="Supprimer" url="suppression.xhtml" />
+			<p:menuitem value="Rechercher" url="recherche.xhtml" />
+		</p:breadCrumb>
+	</h:form>
+
+
+	<h1 style="color: red; text-align: center">Liste des lignes de commandes:</h1>
+	<p:dataTable var="produit" value="#{clientMB.listesComandes}">
+		<p:column headerText="Id">
+			<h:outputText value="#{produit.idProduit}" />
+		</p:column>
+
+		<p:column headerText="Designation">
+			<h:outputText value="#{produit.designation}" />
+		</p:column>
+		
+		<p:column headerText="Description">
+			<h:outputText value="#{produit.description}" />
+		</p:column>
+
+		<p:column headerText="Prix">
+			<h:outputText value="#{produit.prix}" />
+		</p:column>
+
+		<p:column headerText="Quantite">
+			<h:outputText value="#{produit.quantite}"/>
+		</p:column>
+		
+		<p:column headerText="Photo">
+			<h:outputText value="#{produit.photo}"/>
+		</p:column>
+		
+		<p:column headerText="Ajouter panier">
+			<h:outputText value="#{}"/>
+		</p:column>
+		
+	</p:dataTable>
+
+
+
+</h:body>
+
+</html>

@@ -1,11 +1,10 @@
-package fr.adaming.dao;
+package fr.adaming.service;
 
 import java.util.List;
 
 import fr.adaming.entities.Client;
 
-
-public interface IClientDao {
+public interface IClientService {
 	
 	public List<Client> getAllClients ();
 	
@@ -18,6 +17,5 @@ public interface IClientDao {
 	public Client searchClientByID (Client clientIn);
 	
 	public List<Client> searchClientByNom (Client clientIn);
-	
 
 }

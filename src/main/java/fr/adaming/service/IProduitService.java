@@ -9,7 +9,7 @@ public interface IProduitService {
 
 	public List<Produit> getAllProduit();
 
-	public int addProduit(Produit produit);
+	public int addProduit(Produit produit, Categorie categorie);
 
 	public int updateProduit(Produit produit);
 
@@ -17,6 +17,6 @@ public interface IProduitService {
 
 	public List<Produit> searchProduitByCategorie(Produit produit, Categorie categorie);
 
-	public Produit searchProduitByName(Produit produit);
+	public List<Produit>searchProduitByName(String motCle);
 
 }
