@@ -83,16 +83,13 @@ public class Commande implements Serializable {
 		this.client = client;
 	}
 	
-	
 
-	public LigneCommande getListeLignesCommandes() {
+	public List<LigneCommande> getListeLignesCommandes() {
 		return listeLignesCommandes;
 	}
 
 
-
-
-	public void setListeLignesCommandes(LigneCommande listeLignesCommandes) {
+	public void setListeLignesCommandes(List<LigneCommande> listeLignesCommandes) {
 		this.listeLignesCommandes = listeLignesCommandes;
 	}
 
