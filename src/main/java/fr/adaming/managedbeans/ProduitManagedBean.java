@@ -181,7 +181,7 @@ public class ProduitManagedBean {
 		return "recherche";
 	}
 	
-	public Produit searchProduitByName() {
+	/*public Produit searchProduitByName() {
 		
 		// appel de la méthode service
 		this.produit = produitService.searchProduitByName(produit);
@@ -196,6 +196,6 @@ public class ProduitManagedBean {
 
 		return "recherche";
 		
-	}
+	}*/
 
 }
