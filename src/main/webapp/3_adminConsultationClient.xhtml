@@ -30,6 +30,30 @@ ajout de la recherche par id et par date
 	<h:form>
 		<h:commandButton value="Déconnexion" action="#{adminMB.seDeconnecter}" />
 	</h:form>
+	
+	<br/>
+	<br/>
+	
+	
+		<h:form>
+		<h:panelGrid columns="2">
+		Rechercher par ID: <p:inputText value="#{clientMB.client.idClient}" />
+			<h:commandButton value="Ajouter" action="#{clientMB.searchClientByID}"></h:commandButton>
+		</h:panelGrid>
+	</h:form>
+		<br/>
+	<br/>
+	
+	
+		<h:form>
+		<h:panelGrid columns="2">
+		Recherche par Nom: <p:inputText value="#{clientMB.client.nomClient}" />
+			<h:commandButton value="Ajouter" action="#{clientMB.searchClientByNom}"></h:commandButton>
+		</h:panelGrid>
+	</h:form>
+	
+		<br/>
+	<br/>
 
 	<h1 style="color: red; text-align: center">Liste des clients:</h1>
 	<p:dataTable var="client" value="#{clientMB.listeClients}">
