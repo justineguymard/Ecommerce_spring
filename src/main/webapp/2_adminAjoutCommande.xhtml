@@ -27,9 +27,8 @@
 
 	<h:form>
 		<h:panelGrid columns="2">
-			Nom: <p:inputText value="#{categorieMB.categorie.nomCategorie}" />
-			Photo: <p:inputText value="#{categorieMB.categorie.photo}"/>
-			Description : <p:inputText value="#{categorieMB.categorie.description}"/>
+			Nom: <p:calendar value="#{commandeMB.commande.dateCommande}" />
+			ID du Client: <p:inputText value="#{commandeMB.commande.client.idClient}"/>
 			<h:commandButton value="Ajouter" action="#{categorieMB.addCategorie}"></h:commandButton>
 		</h:panelGrid>
 	</h:form>

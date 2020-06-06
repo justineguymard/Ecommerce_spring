@@ -1,6 +1,7 @@
 package fr.adaming.managedbeans;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -114,11 +115,13 @@ public class ClientManagedBean implements Serializable{
 	
 	
 	public String searchClientByID () {
-		
+		List <Client> clienttemp = new ArrayList<Client>();
 		Client clientverif = clientService.searchClientByID(this.client);
 		
 		if (clientverif != null) {
-			this.listeClients=clientService.getAllClients();
+			
+			clienttemp.add(clientverif);
+			this.listeClients=clienttemp;
 			return "3_adminConsultationClient";
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Pas de client avec cet ID."));
@@ -131,7 +134,7 @@ public class ClientManagedBean implements Serializable{
 		List <Client> clientverif = clientService.searchClientByNom(this.client);
 		
 		if (clientverif.size() != 0) {
-			this.listeClients=clientService.getAllClients();
+			this.listeClients=clientverif;
 			return "3_adminConsultationClient";
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Pas de client(s) portant ce nom."));
