@@ -13,35 +13,6 @@
 
 <h:body>
 
-	<style type="text/css">
-.label {
-	width: 20%;
-	padding: 4px;
-}
-
-.value {
-	width: 80%;
-	padding: 4px;
-}
-
-.grid {
-	width: 100%;
-}
-
-.error {
-	color: red;
-}
-
-.outputLabel {
-	font-weight: bold;
-}
-
-.grid {
-	width: 33%;
-	padding: 4px;
-}
-</style>
-
 	<h:form>
 		<h:commandButton value="Quitter" action="#{adminMB.closeAppli}" />
 	</h:form>
@@ -49,25 +20,26 @@
 	<div
 		style="display: flex; justify-content: center; width: 50%; margin: auto; margin-top: 200px;">
 		<h:form>
+			<p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
 
+			<p:fieldset legend="Connection" style="margin-bottom:20px">
 
-				<p:tab id="contact">
-					<p:panel header="Connexion">
-						<p:messages />
-						<h:panelGrid columns="2" columnClasses="label, value">
-							<h:outputText value="Email: *" />
-							<p:inputText value="#{adminMB.admin.mail}" required="true"
-								label="Email" />
+				<h:panelGrid columns="2">
 
-							<h:outputText value="Mot-de-passe: *" />
-							<p:inputText value="#{adminMB.admin.mdp}" />
-						</h:panelGrid>
+					<h:outputText value="Email: *" />
+					<p:inputText value="#{adminMB.admin.mail}" required="true"
+						label="Email" />
 
-						<h:commandButton value="Valider" action="#{adminMB.seConnecter}" ></h:commandButton>
-					</p:panel>
-				</p:tab>
+					<h:outputText value="Mot-de-passe: *" />
+					<p:inputText value="#{adminMB.admin.mdp}" required="true"
+						label="Mdp" />
 
-			
+					<p:commandButton value="Valider" action="#{adminMB.seConnecter}"></p:commandButton>
+
+				</h:panelGrid>
+
+			</p:fieldset>
+
 		</h:form>
 	</div>
 

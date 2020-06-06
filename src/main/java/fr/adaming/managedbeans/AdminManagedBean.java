@@ -68,9 +68,9 @@ public class AdminManagedBean implements Serializable {
 			// ajouter le formateur cennecté dans la session
 			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("adminSession", adminOut);
 
-			return "1_adminConsultation";
+			return "1_1_adminConsultation";
 		} else {
-			return "1_adminLogin";
+			return "1_0_adminLogin";
 		}
 	}
 
@@ -81,7 +81,7 @@ public class AdminManagedBean implements Serializable {
 		// ajouter le message utilisateur pour l'echec de connexion
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Vous êtes déconnectés !"));
 
-		return "1_adminLogin";
+		return "1_0_adminLogin";
 	}
 
 	public String closeAppli() {

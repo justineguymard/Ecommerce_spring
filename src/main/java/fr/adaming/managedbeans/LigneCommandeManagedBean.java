@@ -10,15 +10,11 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
 import fr.adaming.entities.Admin;
-import fr.adaming.entities.Categorie;
 import fr.adaming.entities.Commande;
 import fr.adaming.entities.LigneCommande;
 import fr.adaming.entities.Produit;
 import fr.adaming.service.ICommandeService;
-<<<<<<< HEAD
 import fr.adaming.service.ILigneCommandeService;
-=======
->>>>>>> 11d93d64920ec9abe0b667aac52eb709fec0ce08
 import fr.adaming.service.IProduitService;
 
 @ManagedBean(name = "ligneCommandeMB")

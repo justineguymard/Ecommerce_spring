@@ -131,9 +131,9 @@ public class CategorieManagedBean {
 			this.listeCategorie = categorieService.getAllCategorie();
 
 			// On est ultra giga méga content et on va dans l'accueil
-			return "1_adminConsultation";
+			return "1_1_adminConsultation";
 		} else {
-			return "1_adminAjoutCategorie";
+			return "1_2_adminAjoutCategorie";
 		}
 	}
 
@@ -146,11 +146,11 @@ public class CategorieManagedBean {
 			this.listeCategorie = categorieService.getAllCategorie();
 
 			// On est on va dans l'accueil
-			return "1_adminConsultation";
+			return "1_1_adminConsultation";
 		} else {
 			// ajouter le message d'erreur dans facesContext
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("La modification a echouée"));
-			return "1_adminModifCategorie";
+			return "1_3_adminModifCategorie";
 		}
 	}
 
@@ -162,11 +162,11 @@ public class CategorieManagedBean {
 			this.listeCategorie = categorieService.getAllCategorie();
 
 			// On est on va dans l'accueil
-			return "1_adminConsultation";
+			return "1_1_adminConsultation";
 		} else {
 			// ajouter le message d'erreur dans facesContext
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("La suppression a echouée"));
-			return "1_adminSupprCategorie";
+			return "1_4_adminSupprCategorie";
 		}
 	}
 

@@ -13,17 +13,35 @@
 
 <h:body>
 
-
 	<h:form>
-		<p:breadCrumb>
-			<p:menuitem value="Consultation" url="1_adminConsultation.xhtml" />
-			<p:menuitem value="AjoutCategorie" url="1_adminAjoutCategorie.xhtml" />
-			<p:menuitem value="AjoutProduit" url="1_adminAjoutProduit.xhtml" />
-			<p:menuitem value="ModifCategorie" url="1_adminModifCategorie.xhtml" />
-			<p:menuitem value="ModifProduit" url="1_adminModifProduit.xhtml" />
-			<p:menuitem value="SupprCategorie" url="1_adminSupprCategorie.xhtml" />
-			<p:menuitem value="SupprProduit" url="1_adminSupprProduit.xhtml" />
-		</p:breadCrumb>
+		<p:growl id="messages" />
+		<p:menubar>
+			<p:menuitem value="" url="1_1_adminConsultation.xhtml" icon="ui-icon-home" update="messages"/>
+			
+			<p:submenu label="Catégorie" icon="ui-icon-folder-collapsed">						
+				<p:menuitem value="Ajouter" url="1_2_adminAjoutCategorie.xhtml" update="messages"/>
+				<p:menuitem value="Modifier" url="1_3_adminModifCategorie.xhtml" update="messages"/>
+<!-- 				<p:menuitem value="Supprimer" url="1_4_adminSupprCategorie.xhtml" update="messages"/> -->
+			</p:submenu>
+			
+			<p:submenu label="Produit" icon="ui-icon-document">						
+				<p:menuitem value="Ajouter" url="1_2_adminAjoutProduit.xhtml" update="messages"/>
+				<p:menuitem value="Modifier" url="1_3_adminModifProduit.xhtml" update="messages"/>
+<!-- 				<p:menuitem value="Supprimer" url="deposerCe.xhtml" update="messages"/> -->
+			</p:submenu>
+			
+			<p:submenu label="Client" icon="ui-icon-person">						
+<!-- 				<p:menuitem value="Ajouter" url="deposerCc.xhtml" update="messages"/> -->
+				<p:menuitem value="Modifier" url="1_3_adminModifClient.xhtml" update="messages"/>
+<!-- 				<p:menuitem value="Supprimer" url="deposerCe.xhtml" update="messages"/> -->
+			</p:submenu>
+			
+<!-- 			<p:submenu label="Commande" icon="ui-icon-cart">						 -->
+<!-- 				<p:menuitem value="Ajouter" url="deposerCc.xhtml" update="messages"/> -->
+<!-- 				<p:menuitem value="Modifier" url="deposerCe.xhtml" update="messages"/> -->
+<!-- 				<p:menuitem value="Supprimer" url="deposerCe.xhtml" update="messages"/> -->
+<!-- 			</p:submenu> -->
+		</p:menubar>		
 	</h:form>
 	
 	<h:form>
@@ -74,59 +92,70 @@
 		<p:column headerText="Photo">
 			<h:outputText value="#{produit.photo}"/>
 		</p:column>
+		
+		<p:column headerText="Catégorie">
+			<h:outputText value="#{produit.categorie.nomCategorie}"/>
+		</p:column>
+	</p:dataTable>
+	
+	<h1 style="color: red; text-align: center">Liste des clients:</h1>
+	<p:dataTable var="client" value="#{clientMB.listeClient}">
+		<p:column headerText="Id">
+			<h:outputText value="#{client.idClient}" />
+		</p:column>
+
+		<p:column headerText="Nom">
+			<h:outputText value="#{client.nomClient}" />
+		</p:column>
+		
+		<p:column headerText="Adresse">
+			<h:outputText value="#{client.adresse}" />
+		</p:column>
+
+		<p:column headerText="Email">
+			<h:outputText value="#{client.email}" />
+		</p:column>
+
+		<p:column headerText="Tel.">
+			<h:outputText value="#{client.tel}"/>
+		</p:column>
 	</p:dataTable>
 	
 	<h1 style="color: red; text-align: center">Liste des commandes:</h1>
-	<p:dataTable var="produit" value="#{produitMB.listeProduit}">
+	<p:dataTable var="commande" value="#{commandeMB.listeCommande}">
 		<p:column headerText="Id">
-			<h:outputText value="#{produit.idProduit}" />
+			<h:outputText value="#{commande.idCommande}" />
 		</p:column>
 
-		<p:column headerText="Designation">
-			<h:outputText value="#{produit.designation}" />
+		<p:column headerText="Date">
+			<h:outputText value="#{commande.dateCommande}" />
 		</p:column>
 		
-		<p:column headerText="Description">
-			<h:outputText value="#{produit.description}" />
+		<p:column headerText="Id client">
+			<h:outputText value="#{commande.client.idClient}" />
 		</p:column>
 
-		<p:column headerText="Prix">
-			<h:outputText value="#{produit.prix}" />
-		</p:column>
-
-		<p:column headerText="Quantite">
-			<h:outputText value="#{produit.quantite}"/>
-		</p:column>
-		
-		<p:column headerText="Photo">
-			<h:outputText value="#{produit.photo}"/>
+		<p:column headerText="Nom client">
+			<h:outputText value="#{commande.client.nomClient}" />
 		</p:column>
 	</p:dataTable>
 	
 	<h1 style="color: red; text-align: center">Liste des lignes de commandes:</h1>
-	<p:dataTable var="produit" value="#{produitMB.listeProduit}">
+	<p:dataTable var="lc" value="#{ligneCommandeMB.listeLigneCommande}">
 		<p:column headerText="Id">
-			<h:outputText value="#{produit.idProduit}" />
-		</p:column>
-
-		<p:column headerText="Designation">
-			<h:outputText value="#{produit.designation}" />
-		</p:column>
-		
-		<p:column headerText="Description">
-			<h:outputText value="#{produit.description}" />
-		</p:column>
-
-		<p:column headerText="Prix">
-			<h:outputText value="#{produit.prix}" />
+			<h:outputText value="#{lc.id}" />
 		</p:column>
 
 		<p:column headerText="Quantite">
-			<h:outputText value="#{produit.quantite}"/>
+			<h:outputText value="#{lc.quantite}" />
 		</p:column>
 		
-		<p:column headerText="Photo">
-			<h:outputText value="#{produit.photo}"/>
+		<p:column headerText="Id Commande">
+			<h:outputText value="#{lc.commande.idCommande}" />
+		</p:column>
+
+		<p:column headerText="Id Produit">
+			<h:outputText value="#{lc.produit.idProduit}" />
 		</p:column>
 	</p:dataTable>
 

@@ -131,9 +131,9 @@ public class ProduitManagedBean {
 			this.listeProduit = produitService.getAllProduit();
 
 			// On est ultra giga méga content et on va dans l'accueil
-			return "1_adminConsultation";
+			return "1_1_adminConsultation";
 		} else {
-			return "1_adminAjoutProduit";
+			return "1_2_adminAjoutProduit";
 		}
 	}
 
@@ -146,11 +146,11 @@ public class ProduitManagedBean {
 			this.listeProduit = produitService.getAllProduit();
 
 			// On est on va dans l'accueil
-			return "1_adminConsultation";
+			return "1_1_adminConsultation";
 		} else {
 			// ajouter le message d'erreur dans facesContext
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("La modification a echouée"));
-			return "1_adminModifProduit";
+			return "1_3_adminModifProduit";
 		}
 	}
 
@@ -162,11 +162,11 @@ public class ProduitManagedBean {
 			this.listeProduit = produitService.getAllProduit();
 
 			// On est on va dans l'accueil
-			return "1_adminConsultation";
+			return "1_1_adminConsultation";
 		} else {
 			// ajouter le message d'erreur dans facesContext
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("La suppression a echouée"));
-			return "1_adminSupprProduit";
+			return "1_4_adminSupprProduit";
 		}
 	}
 
