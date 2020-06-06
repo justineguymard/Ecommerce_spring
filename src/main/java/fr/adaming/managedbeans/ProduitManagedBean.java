@@ -142,7 +142,7 @@ public class ProduitManagedBean {
 		int verif = produitService.updateProduit(this.produit);
 
 		if (verif != 0) {
-			// Mettre à jour la liste des étudiants du prof
+			// Mettre à jour la liste 
 			this.listeProduit = produitService.getAllProduit();
 
 			// On est on va dans l'accueil
@@ -155,7 +155,7 @@ public class ProduitManagedBean {
 	}
 
 	public String deleteProduit() {
-		int verif = produitService.deleteProduit(produit);
+		int verif = produitService.deleteProduit(this.produit);
 
 		if (verif != 0) {
 			// Mettre à jour la liste des étudiants du prof
@@ -172,7 +172,7 @@ public class ProduitManagedBean {
 
 	public String searchProduitByCategorie() {
 		// appel de la methode service
-		this.listeProduit = produitService.searchProduitByCategorie(categorie);
+		this.listeProduit = produitService.searchProduitByCategorie(this.categorie);
 
 		if (this.listeProduit != null) {
 			this.indice = true;
