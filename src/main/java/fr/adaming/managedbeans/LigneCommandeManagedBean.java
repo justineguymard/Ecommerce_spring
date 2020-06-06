@@ -14,7 +14,13 @@ import fr.adaming.entities.Commande;
 import fr.adaming.entities.LigneCommande;
 import fr.adaming.entities.Produit;
 import fr.adaming.service.ICommandeService;
+<<<<<<< HEAD
 import fr.adaming.service.ILigneCommandeService;
+=======
+
+import fr.adaming.service.ILigneCommandeService;
+
+>>>>>>> 0038a89e563be94c17f572636ca1295325786a8d
 import fr.adaming.service.IProduitService;
 
 @ManagedBean(name = "ligneCommandeMB")
