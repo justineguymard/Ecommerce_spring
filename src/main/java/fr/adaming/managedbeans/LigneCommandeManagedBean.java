@@ -15,7 +15,10 @@ import fr.adaming.entities.Commande;
 import fr.adaming.entities.LigneCommande;
 import fr.adaming.entities.Produit;
 import fr.adaming.service.ICommandeService;
+<<<<<<< HEAD
 import fr.adaming.service.ILigneCommandeService;
+=======
+>>>>>>> 11d93d64920ec9abe0b667aac52eb709fec0ce08
 import fr.adaming.service.IProduitService;
 
 @ManagedBean(name = "ligneCommandeMB")
@@ -65,7 +68,7 @@ public class LigneCommandeManagedBean {
 		this.produit = new Produit();
 
 		// recuperer la liste lors de l'instiation du ManagedBean
-		this.listeCommande = commandeService.getAllCommande();
+		this.listeCommande = commandeService.getAllCommandes();
 
 		// instancier une catégorie pour éviter l'erreur target unreachable
 		this.commande = new Commande();

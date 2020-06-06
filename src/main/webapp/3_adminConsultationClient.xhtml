@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Facelet Accueil</title>
+</h:head>
+
+<h:body>
+
+ajout de la recherche par id et par date
+
+	<h:form>
+		<p:breadCrumb>
+			<p:menuitem value="Consultation" url="1_adminConsultation.xhtml" />
+			<p:menuitem value="AjoutCategorie" url="1_adminAjoutCategorie.xhtml" />
+			<p:menuitem value="AjoutProduit" url="1_adminAjoutProduit.xhtml" />
+			<p:menuitem value="ModifCategorie" url="1_adminModifCategorie.xhtml" />
+			<p:menuitem value="ModifProduit" url="1_adminModifProduit.xhtml" />
+			<p:menuitem value="SupprCategorie" url="1_adminSupprCategorie.xhtml" />
+			<p:menuitem value="SupprProduit" url="1_adminSupprProduit.xhtml" />
+		</p:breadCrumb>
+	</h:form>
+	
+	<h:form>
+		<h:commandButton value="Déconnexion" action="#{adminMB.seDeconnecter}" />
+	</h:form>
+
+	<h1 style="color: red; text-align: center">Liste des clients:</h1>
+	<p:dataTable var="client" value="#{clientMB.listeClients}">
+		<p:column headerText="ID">
+			<h:outputText value="#{client.idClient}" />
+		</p:column>
+
+		<p:column headerText="Nom">
+			<h:outputText value="#{client.nomClient}" />
+		</p:column>
+
+		<p:column headerText="Photo">
+			<h:outputText value="#{client.adresse}" />
+		</p:column>
+		
+		<p:column headerText="Photo">
+			<h:outputText value="#{client.email}" />
+		</p:column>
+
+		<p:column headerText="Description">
+			<h:outputText value="#{client.tel}"/>
+		</p:column>
+	</p:dataTable>
+	
+
+	
+
+</h:body>
+</html>
