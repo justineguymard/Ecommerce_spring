@@ -27,8 +27,7 @@
 
 	<h:form>
 		<h:panelGrid columns="2">
-			Nom: <p:calendar value="#{commandeMB.commande.dateCommande}" />
-			ID du Client: <p:inputText value="#{commandeMB.commande.client.idClient}"/>
+			Date : <p:calendar value="#{commandeMB.commande.dateCommande}" />
 			<h:commandButton value="Ajouter" action="#{categorieMB.addCategorie}"></h:commandButton>
 		</h:panelGrid>
 	</h:form>
