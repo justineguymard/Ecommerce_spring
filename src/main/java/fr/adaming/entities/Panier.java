@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.faces.bean.ManagedProperty;
 
+import fr.adaming.service.IPanierService;
+
 
 
 public class Panier implements Serializable {

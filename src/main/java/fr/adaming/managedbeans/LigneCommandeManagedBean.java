@@ -79,7 +79,7 @@ public class LigneCommandeManagedBean implements Serializable {
 
 	// getter et setters
 	public LigneCommande getLigneCommande() {
-//		return ligneCommande;
+		return ligneCommande;
 	}
 
 	public void setLigneCommande(LigneCommande ligneCommande) {
