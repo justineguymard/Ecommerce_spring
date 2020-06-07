@@ -16,34 +16,40 @@
 	<h:form>
 		<p:growl id="messages" />
 		<p:menubar>
-			<p:menuitem value="" url="1_1_adminConsultation.xhtml" icon="ui-icon-home" update="messages"/>
-			
-			<p:submenu label="Catégorie" icon="ui-icon-folder-collapsed">						
-				<p:menuitem value="Ajouter" url="1_2_adminAjoutCategorie.xhtml" update="messages"/>
-				<p:menuitem value="Modifier" url="1_3_adminModifCategorie.xhtml" update="messages"/>
-<!-- 				<p:menuitem value="Supprimer" url="1_4_adminSupprCategorie.xhtml" update="messages"/> -->
+			<p:menuitem value="" url="1_1_adminConsultation.xhtml"
+				icon="ui-icon-home" update="messages" />
+
+			<p:submenu label="Catégorie" icon="ui-icon-folder-collapsed">
+				<p:menuitem value="Ajouter" url="1_2_adminAjoutCategorie.xhtml"
+					update="messages" />
+				<p:menuitem value="Modifier" url="1_3_adminModifCategorie.xhtml"
+					update="messages" />
+				<!-- 				<p:menuitem value="Supprimer" url="1_4_adminSupprCategorie.xhtml" update="messages"/> -->
 			</p:submenu>
-			
-			<p:submenu label="Produit" icon="ui-icon-document">						
-				<p:menuitem value="Ajouter" url="1_2_adminAjoutProduit.xhtml" update="messages"/>
-				<p:menuitem value="Modifier" url="1_3_adminModifProduit.xhtml" update="messages"/>
-<!-- 				<p:menuitem value="Supprimer" url="deposerCe.xhtml" update="messages"/> -->
+
+			<p:submenu label="Produit" icon="ui-icon-document">
+				<p:menuitem value="Ajouter" url="1_2_adminAjoutProduit.xhtml"
+					update="messages" />
+				<p:menuitem value="Modifier" url="1_3_adminModifProduit.xhtml"
+					update="messages" />
+				<!-- 				<p:menuitem value="Supprimer" url="deposerCe.xhtml" update="messages"/> -->
 			</p:submenu>
-			
-			<p:submenu label="Client" icon="ui-icon-person">						
-<!-- 				<p:menuitem value="Ajouter" url="deposerCc.xhtml" update="messages"/> -->
-				<p:menuitem value="Modifier" url="1_3_adminModifClient.xhtml" update="messages"/>
-<!-- 				<p:menuitem value="Supprimer" url="deposerCe.xhtml" update="messages"/> -->
+
+			<p:submenu label="Client" icon="ui-icon-person">
+				<!-- 				<p:menuitem value="Ajouter" url="deposerCc.xhtml" update="messages"/> -->
+				<p:menuitem value="Modifier" url="1_3_adminModifClient.xhtml"
+					update="messages" />
+				<!-- 				<p:menuitem value="Supprimer" url="deposerCe.xhtml" update="messages"/> -->
 			</p:submenu>
-			
-<!-- 			<p:submenu label="Commande" icon="ui-icon-cart">						 -->
-<!-- 				<p:menuitem value="Ajouter" url="deposerCc.xhtml" update="messages"/> -->
-<!-- 				<p:menuitem value="Modifier" url="deposerCe.xhtml" update="messages"/> -->
-<!-- 				<p:menuitem value="Supprimer" url="deposerCe.xhtml" update="messages"/> -->
-<!-- 			</p:submenu> -->
-		</p:menubar>		
+
+			<!-- 			<p:submenu label="Commande" icon="ui-icon-cart">						 -->
+			<!-- 				<p:menuitem value="Ajouter" url="deposerCc.xhtml" update="messages"/> -->
+			<!-- 				<p:menuitem value="Modifier" url="deposerCe.xhtml" update="messages"/> -->
+			<!-- 				<p:menuitem value="Supprimer" url="deposerCe.xhtml" update="messages"/> -->
+			<!-- 			</p:submenu> -->
+		</p:menubar>
 	</h:form>
-	
+
 	<h:form>
 		<h:commandButton value="Déconnexion" action="#{adminMB.seDeconnecter}" />
 	</h:form>
@@ -59,14 +65,15 @@
 		</p:column>
 
 		<p:column headerText="Photo">
-			<p:graphicImage src="photo?idCategorie=#{categorie.photo}" />
+			<h:outputText value="#{categorie.photo}" />
+			<!-- 			<p:graphicImage src="photo?idCategorie=#{categorie.photo}" /> -->
 		</p:column>
 
 		<p:column headerText="Description">
-			<h:outputText value="#{categorie.description}"/>
+			<h:outputText value="#{categorie.description}" />
 		</p:column>
 	</p:dataTable>
-	
+
 	<h1 style="color: red; text-align: center">Liste des produits:</h1>
 	<p:dataTable var="produit" value="#{produitMB.listeProduit}">
 		<p:column headerText="Id">
@@ -76,7 +83,7 @@
 		<p:column headerText="Designation">
 			<h:outputText value="#{produit.designation}" />
 		</p:column>
-		
+
 		<p:column headerText="Description">
 			<h:outputText value="#{produit.description}" />
 		</p:column>
@@ -86,20 +93,20 @@
 		</p:column>
 
 		<p:column headerText="Quantite">
-			<h:outputText value="#{produit.quantite}"/>
+			<h:outputText value="#{produit.quantite}" />
 		</p:column>
-		
+
 		<p:column headerText="Photo">
-			<h:outputText value="#{produit.photo}"/>
+			<h:outputText value="#{produit.photo}" />
 		</p:column>
-		
+
 		<p:column headerText="Catégorie">
-			<h:outputText value="#{produit.categorie.nomCategorie}"/>
+			<h:outputText value="#{produit.categorie.nomCategorie}" />
 		</p:column>
 	</p:dataTable>
-	
+
 	<h1 style="color: red; text-align: center">Liste des clients:</h1>
-	<p:dataTable var="client" value="#{clientMB.listeClient}">
+	<p:dataTable var="client" value="#{clientMB.listeClients}">
 		<p:column headerText="Id">
 			<h:outputText value="#{client.idClient}" />
 		</p:column>
@@ -107,7 +114,7 @@
 		<p:column headerText="Nom">
 			<h:outputText value="#{client.nomClient}" />
 		</p:column>
-		
+
 		<p:column headerText="Adresse">
 			<h:outputText value="#{client.adresse}" />
 		</p:column>
@@ -117,20 +124,22 @@
 		</p:column>
 
 		<p:column headerText="Tel.">
-			<h:outputText value="#{client.tel}"/>
+			<h:outputText value="#{client.tel}" />
 		</p:column>
 	</p:dataTable>
-	
+
 	<h1 style="color: red; text-align: center">Liste des commandes:</h1>
-	<p:dataTable var="commande" value="#{commandeMB.listeCommande}">
+	<p:dataTable var="commande" value="#{commandeMB.listeCommandes}">
 		<p:column headerText="Id">
 			<h:outputText value="#{commande.idCommande}" />
 		</p:column>
 
 		<p:column headerText="Date">
-			<h:outputText value="#{commande.dateCommande}" />
+			<h:outputText value="#{commande.dateCommande}">
+				<f:convertDateTime pattern="dd-MMMM-yyyy" />
+			</h:outputText>
 		</p:column>
-		
+
 		<p:column headerText="Id client">
 			<h:outputText value="#{commande.client.idClient}" />
 		</p:column>
@@ -139,8 +148,9 @@
 			<h:outputText value="#{commande.client.nomClient}" />
 		</p:column>
 	</p:dataTable>
-	
-	<h1 style="color: red; text-align: center">Liste des lignes de commandes:</h1>
+
+	<h1 style="color: red; text-align: center">Liste des lignes de
+		commandes:</h1>
 	<p:dataTable var="lc" value="#{ligneCommandeMB.listeLigneCommande}">
 		<p:column headerText="Id">
 			<h:outputText value="#{lc.id}" />
@@ -150,8 +160,16 @@
 			<h:outputText value="#{lc.quantite}" />
 		</p:column>
 		
+		<p:column headerText="Prix">
+			<h:outputText value="#{lc.prix}" />
+		</p:column>
+
 		<p:column headerText="Id Commande">
 			<h:outputText value="#{lc.commande.idCommande}" />
+		</p:column>
+		
+		<p:column headerText="Id Client">
+			<h:outputText value="#{lc.commande.client.idClient}" />
 		</p:column>
 
 		<p:column headerText="Id Produit">
