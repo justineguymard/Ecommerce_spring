@@ -3,6 +3,7 @@ package fr.adaming.entities;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @SuppressWarnings("serial")
@@ -30,8 +31,8 @@ public class Panier implements Serializable {
 
 	}
 	
-	public Collection<LigneCommande> getProduits(){
-		return produitsPanier.values();
+	public List <LigneCommande> getProduits(){
+		return (List<LigneCommande>) produitsPanier.values();
 	}
 
 	public int getSize() {
