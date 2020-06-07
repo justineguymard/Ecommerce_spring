@@ -6,12 +6,16 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+
+import org.hibernate.Session;
 
 import fr.adaming.entities.Client;
 import fr.adaming.entities.Commande;
 import fr.adaming.entities.LigneCommande;
 import fr.adaming.entities.Produit;
+import fr.adaming.service.IPanierService;
 
 @ManagedBean(name="panierMB")
 @SessionScoped
@@ -22,6 +26,9 @@ public class PanierManagedBean implements Serializable{
 	private Client client;
 	private Commande commande;
 	private Produit produit;
+	
+	@ManagedProperty(value="#{panierService}")
+	private IPanierService panierService;
 	
 	
 	public PanierManagedBean() {
@@ -35,23 +42,12 @@ public class PanierManagedBean implements Serializable{
 		this.client = new Client ();
 		this.commande = new Commande();
 		this.produit = new Produit();	
+		this.ligneCommande = new LigneCommande();
 		
 	}
 	
 
-	public String addProduitPanier (Produit produitIn, int quantite) {
-		
-		this.ligneCommande.setQuantite(quantite);
-		this.ligneCommande.setProduit(produitIn);
-		this.ligneCommande.setCommande(this.commande);
-		this.commande.setClient(this.client);
-		
-		System.out.println(produitIn);
-		
-		System.out.println(quantite);
-		
-		return "4_userProduitListe";
-	}
+
 	
 	
 	
@@ -87,9 +83,22 @@ public class PanierManagedBean implements Serializable{
 	public void setProduit(Produit produit) {
 		this.produit = produit;
 	}
+
+	public LigneCommande getLigneCommande() {
+		return ligneCommande;
+	}
+
+	public void setLigneCommande(LigneCommande ligneCommande) {
+		this.ligneCommande = ligneCommande;
+	}
 	
 
 	
-	
+		public String addProduitPanier () {
+		
+		System.out.println("yes");
+		
+		return "4_userProduitListe";
+	}
 	
 }

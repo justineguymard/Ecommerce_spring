@@ -5,6 +5,6 @@ import fr.adaming.entities.Produit;
 
 public interface IPanierService {
 	
-	public LigneCommande addProduitPanier (Produit produitIn);
+	public LigneCommande addProduitPanier (int quantite);
 
 }

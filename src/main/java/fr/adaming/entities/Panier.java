@@ -15,7 +15,8 @@ public class Panier implements Serializable {
 	private List<LigneCommande> listeLigneCommande;
 	private Commande commande;
 	private Produit produit;
-	
+
+
 	@ManagedProperty(value="#panierService")
 	private IPanierService panierService;
 	
