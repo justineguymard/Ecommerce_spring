@@ -39,4 +39,10 @@
 	<welcome-file-list>
 		<welcome-file>0_accueilSite.xhtml</welcome-file><!-- ======================================= -->
 	</welcome-file-list>
+
+	<!-- Définir les commentaire des facelets -->
+	<context-param>
+		<param-name>facelets.SKIP_COMMENTS</param-name>
+		<param-value>true</param-value>
+	</context-param>
 </web-app>
