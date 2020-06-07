@@ -1,5 +1,6 @@
 package fr.adaming.managedbeans;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -21,7 +22,7 @@ import fr.adaming.service.IProduitService;
 
 @ManagedBean(name = "ligneCommandeMB")
 @RequestScoped
-public class LigneCommandeManagedBean {
+public class LigneCommandeManagedBean implements Serializable {
 
 	// DEclaration des attributs du managedBeans qui vont ecapsuler le modele
 	// MVC2
@@ -78,7 +79,7 @@ public class LigneCommandeManagedBean {
 
 	// getter et setters
 	public LigneCommande getLigneCommande() {
-		return ligneCommande;
+//		return ligneCommande;
 	}
 
 	public void setLigneCommande(LigneCommande ligneCommande) {

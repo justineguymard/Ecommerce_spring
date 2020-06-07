@@ -1,5 +1,6 @@
 package fr.adaming.managedbeans;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -17,7 +18,7 @@ import fr.adaming.service.IProduitService;
 
 @ManagedBean(name = "produitMB")
 @RequestScoped
-public class ProduitManagedBean {
+public class ProduitManagedBean implements Serializable {
 
 	// DEclaration des attributs du managedBeans qui vont ecapsuler le modele
 	// MVC2
