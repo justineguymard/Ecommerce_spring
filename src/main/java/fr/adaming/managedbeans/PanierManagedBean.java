@@ -45,6 +45,7 @@ public class PanierManagedBean implements Serializable{
 		this.commande = new Commande();
 		this.produit = new Produit();	
 		this.ligneCommande = new LigneCommande();
+		this.panier = new Panier();
 		
 	}
 	
@@ -112,12 +113,14 @@ public class PanierManagedBean implements Serializable{
 	
 
 	
-	public String addProduitPanier (int idProduit, int quantite) {
+	public String ajoutProduitPanier () {
 		
-		Produit prdtajout = panierService.GetProduit((long) idProduit);
-		this.panier.ajoutProduitPanier(prdtajout, this.ligneCommande.getQuantite());
+		System.out.println("\n ======= \n\n"+this.produit.getIdProduit());
+		
+		this.panier.ajoutProduitPanier(this.produit, this.ligneCommande.getQuantite());
 		
 		this.produit.setSelectionne(true);
+		
 		System.out.println("yes");
 		
 		return "4_userProduitListe";

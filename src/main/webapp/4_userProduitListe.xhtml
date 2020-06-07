@@ -76,12 +76,13 @@
 			<f:facet name="header">
 				<h:outputText value="Action" />
 			</f:facet>
+		<h:form>
 			<h:commandButton value="voir produit" action="4_userAjoutProduitPanier" >
-			
+			<f:setPropertyActionListener value="#{prod}" target="#{produitMB.produit}"></f:setPropertyActionListener>
 			
 			
 			</h:commandButton>
-		
+		</h:form>
 
 		</p:column>
 
