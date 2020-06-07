@@ -27,22 +27,22 @@
 
 	<h:form>
 		<h:panelGrid columns="2">
-			<p:outputText value="Designation:" />
+			<p:outputLabel value="Designation:" />
 			<p:inputText value="#{produitMB.produit.designation}" />
 
-			<p:outputText value="Description:" />
+			<p:outputLabel value="Description:" />
 			<p:inputText value="#{produitMB.produit.description}" />
 
-			<p:outputText value="Prix:" />
+			<p:outputLabel value="Prix:" />
 			<p:inputText value="#{produitMB.produit.prix}" />
 
-			<p:outputText value="Quantite:" />
+			<p:outputLabel value="Quantite:" />
 			<p:inputText value="#{produitMB.produit.quantite}" />
 
-			<p:outputText value="Selectionne:" />
+			<p:outputLabel value="Selectionne:" />
 			<p:inputText value="#{produitMB.produit.selectionne}" />
 
-			<p:outputText value="Photo:" />
+			<p:outputLabel value="Photo:" />
 			<p:fileUpload value="#{fileUploadView.file}" mode="simple"
 				skinSimple="true" />
 			<p:commandButton value="Submit" ajax="false"
