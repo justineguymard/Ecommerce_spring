@@ -14,6 +14,7 @@ import org.hibernate.Session;
 import fr.adaming.entities.Client;
 import fr.adaming.entities.Commande;
 import fr.adaming.entities.LigneCommande;
+import fr.adaming.entities.Panier;
 import fr.adaming.entities.Produit;
 import fr.adaming.service.IPanierService;
 
@@ -26,6 +27,7 @@ public class PanierManagedBean implements Serializable{
 	private Client client;
 	private Commande commande;
 	private Produit produit;
+	private Panier panier;
 	
 	@ManagedProperty(value="#{panierService}")
 	private IPanierService panierService;
@@ -84,6 +86,22 @@ public class PanierManagedBean implements Serializable{
 		this.produit = produit;
 	}
 
+	public Panier getPanier() {
+		return panier;
+	}
+
+	public void setPanier(Panier panier) {
+		this.panier = panier;
+	}
+
+	public IPanierService getPanierService() {
+		return panierService;
+	}
+
+	public void setPanierService(IPanierService panierService) {
+		this.panierService = panierService;
+	}
+
 	public LigneCommande getLigneCommande() {
 		return ligneCommande;
 	}
@@ -94,8 +112,12 @@ public class PanierManagedBean implements Serializable{
 	
 
 	
-		public String addProduitPanier () {
+	public String addProduitPanier (int idProduit, int quantite) {
 		
+		Produit prdtajout = panierService.GetProduit((long) idProduit);
+		this.panier.ajoutProduitPanier(prdtajout, this.ligneCommande.getQuantite());
+		
+		this.produit.setSelectionne(true);
 		System.out.println("yes");
 		
 		return "4_userProduitListe";
