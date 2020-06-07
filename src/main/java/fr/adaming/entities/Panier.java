@@ -1,46 +1,38 @@
 package fr.adaming.entities;
 
 import java.io.Serializable;
-import java.util.List;
-
-import javax.faces.bean.ManagedProperty;
-
-import fr.adaming.service.IPanierService;
+import java.util.HashMap;
+import java.util.Map;
 
 
 
+
+@SuppressWarnings("serial")
 public class Panier implements Serializable {
-	
-	//attributs
-	private List<LigneCommande> listeLigneCommande;
-	private Commande commande;
-	private Produit produit;
 
+	
+	private Map <Long, LigneCommande> produitsPanier = new HashMap<Long, LigneCommande>();
+	
+	public LigneCommande ajoutProduitPanier (Produit produitIn, int quantite) {
+		
+		LigneCommande articlePanier = produitsPanier.get(produitIn.getIdProduit());
+		
+		if (articlePanier == null ) {
+		LigneCommande articlePanierNew = new LigneCommande();
+		articlePanierNew.setProduit(produitIn);
+		articlePanierNew.setQuantite(quantite);
+		articlePanierNew.setPrix((produitIn.getPrix()*quantite));
+		produitsPanier.put(produitIn.getIdProduit(), articlePanierNew);
+		
+		} else {
+			articlePanier.setQuantite(articlePanier.getQuantite()+quantite);
+			articlePanier.setPrix(articlePanier.getPrix()*(articlePanier.getQuantite()+quantite));
+		}
+		
+		
+		return articlePanier;
 
-	@ManagedProperty(value="#panierService")
-	private IPanierService panierService;
-	
-	
-	//Getter et setters
-	public List<LigneCommande> getListeLigneCommande() {
-		return listeLigneCommande;
 	}
-	public void setListeLigneCommande(List<LigneCommande> listeLigneCommande) {
-		this.listeLigneCommande = listeLigneCommande;
-	}
-	public Commande getCommande() {
-		return commande;
-	}
-	public void setCommande(Commande commande) {
-		this.commande = commande;
-	}
-	public Produit getProduit() {
-		return produit;
-	}
-	public void setProduit(Produit produit) {
-		this.produit = produit;
-	}
-	
 	
 	
 	

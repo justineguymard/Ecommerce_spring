@@ -19,13 +19,13 @@
 		<f:facet name="header">
         Liste des produits
     </f:facet>
-		<p:column>
+		<p:column  style="width : 2%">
 			<f:facet name="header">
 				<h:outputText value="ID" />
 			</f:facet>
 			<h:outputText value="#{prod.idProduit}" />
 		</p:column>
-		<p:column>
+		<p:column style="width:18%" >
 			<f:facet name="header">
 				<h:outputText value="Designation" />
 			</f:facet>
@@ -37,7 +37,7 @@
 			</f:facet>
 			<h:outputText value="#{prod.description}" />
 		</p:column>
-		<p:column>
+		<p:column style="width:5%" >
 			<f:facet name="header">
 				<h:outputText value="Prix" />
 			</f:facet>
@@ -63,7 +63,7 @@
 			<h:outputText value="#{prod.photo}" />
 		</p:column>
 
-		<p:column>
+		<p:column style="width:18%" >
 			<f:facet name="header">
 				<h:outputText value="Catégorie (ID)" />
 			</f:facet>
@@ -71,15 +71,16 @@
 				value="#{prod.categorie.nomCategorie} (#{prod.categorie.idCategorie})" />
 		</p:column>
 
-		<p:column>
+		<p:column  style="width :35%">
 
 			<f:facet name="header">
 				<h:outputText value="Action" />
 			</f:facet>
 			<h:form>
-			
+
 				<h:inputText value="#{panierMB.ligneCommande.quantite}" />
-				<h:commandButton action="#{panierMB.addProduitPanier}" value="Ajouter au panier" />
+				<h:commandButton action="#{panierMB.addProduitPanier}"
+					value="Ajouter au panier" />
 			</h:form>
 
 		</p:column>
@@ -87,6 +88,48 @@
 
 
 	</p:dataTable>
+
+	<br />
+	<br />
+
+	<p:dataTable var="lc" value="#{panierMB.listeLignesCommande}">
+		<f:facet name="header">
+        Liste des produits commandés
+    </f:facet>
+		<p:column >
+			<f:facet name="header">
+				<h:outputText value="ID" />
+			</f:facet>
+			<h:outputText value="#{lc.id}" />
+		</p:column>
+		<p:column>
+			<f:facet name="header">
+				<h:outputText value="nom du produit" />
+			</f:facet>
+			<h:outputText value="#{lc.produit.nom}" />
+		</p:column>
+		<p:column>
+			<f:facet name="header">
+				<h:outputText value="quantité" />
+			</f:facet>
+			<h:outputText value="#{lc.quantite}" />
+		</p:column>
+		<p:column>
+			<f:facet name="header">
+				<h:outputText value="prix unit" />
+			</f:facet>
+			<h:outputText value="#{lc.produit.prix}" />
+		</p:column>
+		<p:column>
+			<f:facet name="header">
+				<h:outputText value="prix total" />
+			</f:facet>
+			<h:outputText value="#{lc.produit.prix*quantite}" />
+		</p:column>
+
+
+	</p:dataTable>
+
 
 </h:body>
 
