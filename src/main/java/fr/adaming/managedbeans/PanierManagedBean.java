@@ -17,6 +17,7 @@ import fr.adaming.entities.LigneCommande;
 import fr.adaming.entities.Panier;
 import fr.adaming.entities.Produit;
 import fr.adaming.service.IPanierService;
+import fr.adaming.service.IProduitService;
 
 @ManagedBean(name="panierMB")
 @SessionScoped
@@ -28,11 +29,15 @@ public class PanierManagedBean implements Serializable{
 	private Commande commande;
 	private Produit produit;
 	private Panier panier;
+	private List<Produit> listeProduits;
 	
 	@ManagedProperty(value="#{panierService}")
 	private IPanierService panierService;
 	
+	@ManagedProperty(value="#{produitService}")
+	private IProduitService produitService;
 	
+	//Constructeur
 	public PanierManagedBean() {
 		super();
 	}
@@ -46,15 +51,10 @@ public class PanierManagedBean implements Serializable{
 		this.produit = new Produit();	
 		this.ligneCommande = new LigneCommande();
 		this.panier = new Panier();
-		
+		this.listeProduits = produitService.getAllProduit();
 	}
 	
-
-
-	
-	
-	
-
+	//getters et setters
 	public List<LigneCommande> getListeLignesCommande() {
 		return listeLignesCommande;
 	}
@@ -111,11 +111,28 @@ public class PanierManagedBean implements Serializable{
 		this.ligneCommande = ligneCommande;
 	}
 	
+	
 
+	
+	public List<Produit> getListeProduits() {
+		return listeProduits;
+	}
+
+	public void setListeProduits(List<Produit> listeProduits) {
+		this.listeProduits = listeProduits;
+	}
+
+	public void setProduitService(IProduitService produitService) {
+		this.produitService = produitService;
+	}
+	
+	
+	//methode metier
 	
 	public String ajoutProduitPanier () {
 		
-		System.out.println("\n ======= \n\n"+this.produit.getIdProduit());
+		System.out.println("\n ======= ID Produit :"+this.produit.getIdProduit());
+		System.out.println("\n =======  Quantite :"+this.ligneCommande.getQuantite());
 		
 		this.panier.ajoutProduitPanier(this.produit, this.ligneCommande.getQuantite());
 		

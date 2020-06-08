@@ -15,7 +15,7 @@
 
 
 
-	<p:dataTable var="prod" value="#{produitMB.listeProduit}">
+	<p:dataTable var="prod" value="#{panierMB.listeProduits}">
 		<f:facet name="header">
         Liste des produits
     </f:facet>
@@ -78,7 +78,7 @@
 			</f:facet>
 		<h:form>
 			<h:commandButton value="voir produit" action="4_userAjoutProduitPanier" >
-			<f:setPropertyActionListener value="#{prod}" target="#{produitMB.produit}"></f:setPropertyActionListener>
+			<f:setPropertyActionListener value="#{prod}" target="#{panierMB.produit}"></f:setPropertyActionListener>
 			
 			
 			</h:commandButton>
