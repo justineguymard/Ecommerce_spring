@@ -21,19 +21,29 @@
 			<p:menuitem value="Rechercher" url="recherche.xhtml" />
 		</p:breadCrumb>
 	</h:form>
+<br/>
+
 
 
 	<h:form>
 		<h:panelGrid columns="2">
-			Nom: <p:inputText value="#{eMB.etudiant.nom}" />
-			Prenom: <p:inputText value="#{eMB.etudiant.prenom}"/>
-			Date : <p:calendar value="#{eMB.etudiant.dn}"/>
-			<h:commandButton value="Ajouter" action="#{eMB.ajouter}" />
+			Nom du client : <p:inputText value="#{" />
+			Adresse : <p:inputText value="#{eMB.etudiant.prenom}"/>
+			Email : <p:calendar value="#{eMB.etudiant.dn}"/>
+			Tel : <p:calendar value="#{eMB.etudiant.dn}"/>
+			Enregistrement : <h:commandButton value="Ajouter" action="#{panier}" />
 		</h:panelGrid>
 	</h:form>
 
-
-
+<br/>
+<br/>
+<p:commandButton value="Retour Liste" action="4_userProduitListe.xhtml" />
+<br/>
+<br/>
+<p:commandButton value="Produits commandés" action="4_userPanierListe.xhtml" />
+<br/>
+<br/>
+<p:commandButton value="Enregistrement de la commande" action="4_userEnregistrement.xhtml" />
 
 </h:body>
 

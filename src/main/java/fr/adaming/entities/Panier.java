@@ -9,18 +9,19 @@ import java.util.Map;
 @SuppressWarnings("serial")
 public class Panier implements Serializable {
 
-	private Map<Long, LigneCommande> produitsPanier = new HashMap<Long, LigneCommande>();
+	private Map<Long, LigneCommande> mapProduitsPanier = new HashMap<Long, LigneCommande>();
 
 	public LigneCommande ajoutProduitPanier(Produit produitIn, int quantite) {
 
-		LigneCommande articlePanier = produitsPanier.get(produitIn.getIdProduit());
+		LigneCommande articlePanier = mapProduitsPanier.get(produitIn.getIdProduit());
 
 		if (articlePanier == null) {
 			LigneCommande articlePanierNew = new LigneCommande();
+			produitIn.setSelectionne(true);
 			articlePanierNew.setProduit(produitIn);
 			articlePanierNew.setQuantite(quantite);
 			articlePanierNew.setPrix((produitIn.getPrix() * quantite));
-			produitsPanier.put(produitIn.getIdProduit(), articlePanierNew);
+			mapProduitsPanier.put(produitIn.getIdProduit(), articlePanierNew);
 
 		} else {
 			articlePanier.setQuantite(articlePanier.getQuantite() + quantite);
@@ -31,26 +32,27 @@ public class Panier implements Serializable {
 
 	}
 	
-	public List <LigneCommande> getProduits(){
-		return (List<LigneCommande>) produitsPanier.values();
+	public Collection <LigneCommande> getProduits(){
+		return mapProduitsPanier.values();
 	}
 
 	public int getSize() {
-		return produitsPanier.size();
+		return mapProduitsPanier.size();
 	}
 	
 	public double getTotal() {
 		double total = 0;
-		for(LigneCommande produitPanier:produitsPanier.values()) {
+		for(LigneCommande produitPanier:mapProduitsPanier.values()) {
 			total +=  produitPanier.getPrix()*produitPanier.getQuantite();
 		}
 		return total;
 	}
 	
-	public void deleeProduit (Long idProduit) {
-		produitsPanier.remove(idProduit);
+	public void deleteProduit (Long idProduit) {
+		mapProduitsPanier.remove(idProduit);
 	}
-	
+
+
 	
 	
 }

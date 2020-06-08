@@ -1,4 +1,4 @@
-template.xhtml<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
@@ -23,40 +23,60 @@ template.xhtml<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 	</h:form>
 
 
-	<h1 style="color: red; text-align: center">Liste des lignes de commandes:</h1>
-	<p:dataTable var="produit" value="#{clientMB.listesComandes}">
-		<p:column headerText="Id">
-			<h:outputText value="#{produit.idProduit}" />
+
+
+
+
+	<p:dataTable var="lc" value="#{panierMB.listeLignesCommande}">
+		<f:facet name="header">
+        Liste des produits commandés
+    </f:facet>
+		<p:column>
+			<f:facet name="header">
+				<h:outputText value="ID de la ligne de commande" />
+			</f:facet>
+			<h:outputText value="#{lc.id}" />
+		</p:column>
+			<p:column>
+			<f:facet name="header">
+				<h:outputText value="ID de la ligne de commande" />
+			</f:facet>
+			<h:outputText value="#{lc.produit.designation}" />
 		</p:column>
 
-		<p:column headerText="Designation">
-			<h:outputText value="#{produit.designation}" />
+		<p:column>
+			<f:facet name="header">
+				<h:outputText value="Prix unitaire" />
+			</f:facet>
+			<h:outputText value="#{lc.produit.prix}" />
 		</p:column>
-		
-		<p:column headerText="Description">
-			<h:outputText value="#{produit.description}" />
+		<p:column>
+			<f:facet name="header">
+				<h:outputText value="Quantite" />
+			</f:facet>
+			<h:outputText value="#{lc.quantite}" />
+		</p:column>
+		<p:column>
+			<f:facet name="header">
+				<h:outputText value="Prix total" />
+			</f:facet>
+			<h:outputText value="#{lc.prix}" />
 		</p:column>
 
-		<p:column headerText="Prix">
-			<h:outputText value="#{produit.prix}" />
-		</p:column>
 
-		<p:column headerText="Quantite">
-			<h:outputText value="#{produit.quantite}"/>
-		</p:column>
-		
-		<p:column headerText="Photo">
-			<h:outputText value="#{produit.photo}"/>
-		</p:column>
-		
-		<p:column headerText="Ajouter panier">
-			<h:outputText value="#{}"/>
-		</p:column>
-		
 	</p:dataTable>
-
-
+<br/>
+<br/>
+<p:commandButton value="Retour Liste" action="4_userProduitListe.xhtml" />
+<br/>
+<br/>
+<p:commandButton value="Produits commandés" action="4_userPanierListe.xhtml" />
+<br/>
+<br/>
+<p:commandButton value="Enregistrement de la commande" action="4_userEnregistrement.xhtml" />
 
 </h:body>
 
 </html>
+
+

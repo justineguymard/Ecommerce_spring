@@ -2,7 +2,10 @@ package fr.adaming.managedbeans;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -19,47 +22,48 @@ import fr.adaming.entities.Produit;
 import fr.adaming.service.IPanierService;
 import fr.adaming.service.IProduitService;
 
-@ManagedBean(name="panierMB")
+@ManagedBean(name = "panierMB")
 @SessionScoped
-public class PanierManagedBean implements Serializable{
-	
-	private List <LigneCommande> listeLignesCommande; 
+public class PanierManagedBean implements Serializable {
+
+	private Map<Long, LigneCommande> mapProduitsPanier = new HashMap<Long, LigneCommande>();
+	private Collection<LigneCommande> listeLignesCommande;
 	private LigneCommande ligneCommande;
 	private Client client;
 	private Commande commande;
 	private Produit produit;
 	private Panier panier;
 	private List<Produit> listeProduits;
-	
-	@ManagedProperty(value="#{panierService}")
+
+	@ManagedProperty(value = "#{panierService}")
 	private IPanierService panierService;
-	
-	@ManagedProperty(value="#{produitService}")
+
+	@ManagedProperty(value = "#{produitService}")
 	private IProduitService produitService;
-	
-	//Constructeur
+
+	// Constructeur
 	public PanierManagedBean() {
 		super();
 	}
-	
+
 	@PostConstruct
-	public void init () {
-		
-		this.listeLignesCommande = new ArrayList<>();
-		this.client = new Client ();
+	public void init() {
+		this.mapProduitsPanier = new HashMap<Long, LigneCommande>();
+		this.listeLignesCommande = new ArrayList<LigneCommande>();
+		this.client = new Client();
 		this.commande = new Commande();
-		this.produit = new Produit();	
+		this.produit = new Produit();
 		this.ligneCommande = new LigneCommande();
 		this.panier = new Panier();
 		this.listeProduits = produitService.getAllProduit();
 	}
-	
-	//getters et setters
-	public List<LigneCommande> getListeLignesCommande() {
+
+	// getters et setters
+	public Collection<LigneCommande> getListeLignesCommande() {
 		return listeLignesCommande;
 	}
 
-	public void setListeLignesCommande(List<LigneCommande> listeLignesCommande) {
+	public void setListeLignesCommande(Collection<LigneCommande> listeLignesCommande) {
 		this.listeLignesCommande = listeLignesCommande;
 	}
 
@@ -110,10 +114,7 @@ public class PanierManagedBean implements Serializable{
 	public void setLigneCommande(LigneCommande ligneCommande) {
 		this.ligneCommande = ligneCommande;
 	}
-	
-	
 
-	
 	public List<Produit> getListeProduits() {
 		return listeProduits;
 	}
@@ -125,22 +126,53 @@ public class PanierManagedBean implements Serializable{
 	public void setProduitService(IProduitService produitService) {
 		this.produitService = produitService;
 	}
-	
-	
-	//methode metier
-	
-	public String ajoutProduitPanier () {
-		
-		System.out.println("\n ======= ID Produit :"+this.produit.getIdProduit());
-		System.out.println("\n =======  Quantite :"+this.ligneCommande.getQuantite());
-		
-		this.panier.ajoutProduitPanier(this.produit, this.ligneCommande.getQuantite());
-		
-		this.produit.setSelectionne(true);
-		
-		System.out.println("yes");
-		
-		return "4_userProduitListe";
+
+	public Map<Long, LigneCommande> getMapProduitsPanier() {
+		return mapProduitsPanier;
 	}
-	
+
+	public void setMapProduitsPanier(Map<Long, LigneCommande> mapProduitsPanier) {
+		this.mapProduitsPanier = mapProduitsPanier;
+	}
+
+	// methode metier
+
+	public String ajoutProduitPanier() {
+
+		System.out.println("\n ======= ID Produit :" + this.produit.getIdProduit());
+		System.out.println("\n =======  Quantite :" + this.ligneCommande.getQuantite());
+
+		//LigneCommande test = this.ligneCommande;
+		int quantite = this.ligneCommande.getQuantite();
+
+		LigneCommande test = this.mapProduitsPanier.get(this.produit.getIdProduit());
+
+		if (test == null) {
+
+			this.produit.setSelectionne(true);
+			LigneCommande newProduitAjout = new LigneCommande();
+			this.produit=panierService.GetProduit(this.produit.getIdProduit());
+			newProduitAjout.setProduit(this.produit);
+			System.out.println("\n--------------------- "+this.produit.getDesignation());
+			newProduitAjout.setQuantite(quantite);
+			newProduitAjout.setPrix(quantite * this.produit.getPrix());
+			this.mapProduitsPanier.put(this.produit.getIdProduit(), newProduitAjout);
+
+			this.listeLignesCommande= this.mapProduitsPanier.values();
+
+		}else{
+			test.setQuantite(this.ligneCommande.getQuantite() + test.getQuantite());
+			test.setPrix(test.getProduit().getPrix()* ( test.getQuantite() ));
+			this.mapProduitsPanier.replace(this.produit.getIdProduit(),test);
+			this.listeLignesCommande= this.mapProduitsPanier.values();
+			
+		}
+
+		this.produit.setSelectionne(true);
+
+		System.out.println("yes");
+
+		return "4_userAjoutProduitPanier";
+	}
+
 }

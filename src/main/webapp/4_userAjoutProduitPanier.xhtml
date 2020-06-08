@@ -27,11 +27,60 @@
 		<h:panelGrid columns="2">
 			ID du produit: <p:inputText value="#{panierMB.produit.idProduit}" />
 			Quantite: <p:inputText value="#{panierMB.ligneCommande.quantite}" />
-			<h:commandButton value="Ajouter" action="#{panierMB.ajoutProduitPanier}" />
+			<h:commandButton value="Ajouter"
+				action="#{panierMB.ajoutProduitPanier}" />
 		</h:panelGrid>
 	</h:form>
 
 
+
+	<p:dataTable var="lc" value="#{panierMB.listeLignesCommande}">
+		<f:facet name="header">
+        Liste des produits commandés
+    </f:facet>
+		<p:column>
+			<f:facet name="header">
+				<h:outputText value="ID de la ligne de commande" />
+			</f:facet>
+			<h:outputText value="#{lc.id}" />
+		</p:column>
+			<p:column>
+			<f:facet name="header">
+				<h:outputText value="ID de la ligne de commande" />
+			</f:facet>
+			<h:outputText value="#{lc.produit.designation}" />
+		</p:column>
+
+		<p:column>
+			<f:facet name="header">
+				<h:outputText value="Prix unitaire" />
+			</f:facet>
+			<h:outputText value="#{lc.produit.prix}" />
+		</p:column>
+		<p:column>
+			<f:facet name="header">
+				<h:outputText value="Quantite" />
+			</f:facet>
+			<h:outputText value="#{lc.quantite}" />
+		</p:column>
+		<p:column>
+			<f:facet name="header">
+				<h:outputText value="Prix total" />
+			</f:facet>
+			<h:outputText value="#{lc.prix}" />
+		</p:column>
+
+
+	</p:dataTable>
+<br/>
+<br/>
+<p:commandButton value="Retour Liste" action="4_userProduitListe.xhtml" />
+<br/>
+<br/>
+<p:commandButton value="Produits commandés" action="4_userPanierListe.xhtml" />
+<br/>
+<br/>
+<p:commandButton value="Enregistrement de la commande" action="4_userEnregistrement.xhtml" />
 
 
 </h:body>
