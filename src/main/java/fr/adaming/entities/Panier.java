@@ -52,6 +52,15 @@ public class Panier implements Serializable {
 		mapProduitsPanier.remove(idProduit);
 	}
 
+	public Map<Long, LigneCommande> getMapProduitsPanier() {
+		return mapProduitsPanier;
+	}
+
+	public void setMapProduitsPanier(Map<Long, LigneCommande> mapProduitsPanier) {
+		this.mapProduitsPanier = mapProduitsPanier;
+	}
+
+	
 
 	
 	

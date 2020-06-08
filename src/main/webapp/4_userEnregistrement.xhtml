@@ -12,35 +12,30 @@
 </h:head>
 <h:body>
 
-	<h:form>
-		<p:breadCrumb>
-			<p:menuitem value="Accueil" url="accueil.xhtml" />
-			<p:menuitem value="Ajouter" url="ajout.xhtml" />
-			<p:menuitem value="Modifier" url="modif.xhtml" />
-			<p:menuitem value="Supprimer" url="suppression.xhtml" />
-			<p:menuitem value="Rechercher" url="recherche.xhtml" />
-		</p:breadCrumb>
-	</h:form>
+
 <br/>
 
 
 
 	<h:form>
 		<h:panelGrid columns="2">
-			Nom du client : <p:inputText value="#{" />
-			Adresse : <p:inputText value="#{eMB.etudiant.prenom}"/>
-			Email : <p:calendar value="#{eMB.etudiant.dn}"/>
-			Tel : <p:calendar value="#{eMB.etudiant.dn}"/>
-			Enregistrement : <h:commandButton value="Ajouter" action="#{panier}" />
+			Nom du client : <p:inputText value="#{panierMB.client.nomClient}" />
+			Adresse : <p:inputText value="#{panierMB.client.adresse}"/>
+			Email : <p:inputText value="#{panierMB.client.email}"/>
+			Tel : <p:inputText value="#{panierMB.client.tel}"/>
+			Enregistrement : <h:commandButton value="Ajouter" action="#{panierMB.enrCommande}" />
 		</h:panelGrid>
 	</h:form>
 
 <br/>
 <br/>
-<p:commandButton value="Retour Liste" action="4_userProduitListe.xhtml" />
+<p:commandButton value="Liste des produits" action="4_userProduitListe.xhtml" />
 <br/>
 <br/>
 <p:commandButton value="Produits commandés" action="4_userPanierListe.xhtml" />
+<br/>
+<br/>
+<p:commandButton value="Ajout de produits" action="4_userAjoutProduitPanier.xhtml" />
 <br/>
 <br/>
 <p:commandButton value="Enregistrement de la commande" action="4_userEnregistrement.xhtml" />

@@ -1,6 +1,8 @@
 package fr.adaming.dao;
 
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -41,11 +43,60 @@ public class PanierDaoImpl implements IPanierDao {
 
 	}
 
-	@Override
-	public Commande enrCommande(Panier panierIn, Client clientIn) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	 @Override
+	 public Commande enrCommande(Panier panierIn, Client clientIn) {
+		 //session
+		 Session s = sf.getCurrentSession();
+		 //enregistement du client qui apsse commande
+		 s.persist(clientIn);
+		 //creation d'une nouvelle commande
+		 Commande cmd = new Commande();
+		 
+		 //association de la commande au client
+		 cmd.setClient(clientIn);
+		 
+		 //date de la commande
+		 Date date = new Date();
+		 
+		 //stockage de la date 
+		 cmd.setDateCommande(date);
+		 
+		 //verif console
+		 System.out.println(clientIn);
+		 
+		 // liaison des lignes de commande à la meme commande crée au dessus
+		 panierIn.getProduits().forEach(x -> x.setCommande(cmd));
+		 //panierIn.getProduits().forEach(x -> s.persist(x));
+	
+		 
+		 //boucle for pour parcourir la map
+		 for (Map.Entry mapentry : panierIn.getMapProduitsPanier().entrySet()) {
+			 System.out.println("\n ==== clé : "+mapentry.getKey()+" | valeur : "+mapentry.getValue());
+			 
+			 // ligne de commande temporaire pour stocker la ligne parcouru, idem produit
+			 LigneCommande lcTemp = new LigneCommande();
+			 Produit prodTemp = new Produit();
+			 
+			 //stockage de la ligne
+			 lcTemp = (LigneCommande) mapentry.getValue();
+			 
+			 //stockage du produit dans la ligne associée
+			 int temp = mapentry.getKey().hashCode();
+			 lcTemp.setProduit(prodTemp = GetProduit((long) temp));
+			 
+			 // System.out.println(" ==== Prod ID : "+temp);
+			 //enregistrement de la ligne et son produit associé dans la BD
+			 s.persist(lcTemp);
+			// System.out.println("test lc : "+lcTemp+"Produit : "+lcTemp.getProduit().getIdProduit()+"\n ====");
+			 
+		 }
+		 
+		
+		//enregistrement de la commande dans la BD
+	 	s.persist(cmd);
+		
+	 	return cmd;
+	 }
 
 	@Override
 	public LigneCommande ajoutProduitPanier(Produit produitIn, int quantite) {
@@ -53,42 +104,5 @@ public class PanierDaoImpl implements IPanierDao {
 		return null;
 	}
 
-	// @Override
-	// public List<Produit> produitsSelectionnes() {
-	// Query req = em.createQuery("select p from Produit p WHere p.selectionne =
-	// true");
-	//
-	// return req.getResultList();
-	// }
-	//
-	// @Override
-	// public Produit GetProduit(Long idProduit) {
-	//
-	// return em.find(Produit.class, idProduit);
-	// }
-	//
-	// @Override
-	// public void supprimerProduit(Long idProduit) {
-	// Produit p = this.GetProduit(idProduit);
-	// em.remove(p);
-	//
-	//
-	// }
-	//
-	// @Override
-	// public Commande enrCommande(Panier panierIn, Client clientIn) {
-	// em.persist(clientIn);
-	// Commande cmd = new Commande();
-	// cmd.setClient(clientIn);
-	// //cmd.setListeLignesCommandes(panierIn.getProduits());
-	// em.persist(cmd);
-	// return cmd;
-	// }
-	//
-	// @Override
-	// public LigneCommande ajoutProduitPanier(Produit produitIn, int quantite) {
-	// // TODO Auto-generated method stub
-	// return null;
-	// }
 
 }

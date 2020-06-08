@@ -12,15 +12,6 @@
 </h:head>
 <h:body>
 
-	<h:form>
-		<p:breadCrumb>
-			<p:menuitem value="Accueil" url="accueil.xhtml" />
-			<p:menuitem value="Ajouter" url="ajout.xhtml" />
-			<p:menuitem value="Modifier" url="modif.xhtml" />
-			<p:menuitem value="Supprimer" url="suppression.xhtml" />
-			<p:menuitem value="Rechercher" url="recherche.xhtml" />
-		</p:breadCrumb>
-	</h:form>
 
 
 
@@ -67,14 +58,18 @@
 	</p:dataTable>
 <br/>
 <br/>
-<p:commandButton value="Retour Liste" action="4_userProduitListe.xhtml" />
+<h:form>
+<p:commandButton value="Liste des produits1" action="4_userProduitListe.xhtml" />
 <br/>
 <br/>
 <p:commandButton value="Produits commandés" action="4_userPanierListe.xhtml" />
 <br/>
 <br/>
+<p:commandButton value="Ajout de produits" action="4_userAjoutProduitPanier.xhtml" />
+<br/>
+<br/>
 <p:commandButton value="Enregistrement de la commande" action="4_userEnregistrement.xhtml" />
-
+</h:form>
 </h:body>
 
 </html>
