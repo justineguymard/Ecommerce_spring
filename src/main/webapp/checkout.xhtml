@@ -133,6 +133,8 @@
 											required="true" requiredMessage="Veuillez entrer votre nom" />
 									</div>
 									<div class="col-md-6 mb-3">
+									<h:message for="prenomClient"
+											errorStyle="color:red; display:block" />
 										<p:inputText type="text" class="form-control"
 											id="prenomClient" placeholder="Prénom"
 											value="#{panierMB.prenomClient}" required="true"
@@ -140,24 +142,32 @@
 									</div>
 
 									<div class="col-12 mb-3">
+									<h:message for="rueClient"
+											errorStyle="color:red; display:block" />
 										<p:inputText type="text" class="form-control" id="rueClient"
 											placeholder="Adresse (N° et rue)"
 											value="#{panierMB.rueClient}" required="true"
 											requiredMessage="Veuillez entrer votre rue et numéro de rue" />
 									</div>
 									<div class="col-md-6 mb-3">
+									<h:message for="zipCode"
+											errorStyle="color:red; display:block" />
 										<p:inputText type="text" class="form-control" id="zipCode"
 											placeholder="Code Postal" value="#{panierMB.cpClient}"
 											required="true"
 											requiredMessage="Veuillez entrer votre code postal" />
 									</div>
 									<div class="col-md-6 mb-3">
+									<h:message for="city"
+											errorStyle="color:red; display:block" />
 										<p:inputText type="text" class="form-control" id="city"
 											placeholder="Ville" value="#{panierMB.villeClient}"
 											required="true" requiredMessage="Veuillez entrer votre ville" />
 									</div>
 
 									<div class="col-12 mb-3">
+									<h:message for="pays"
+											errorStyle="color:red; display:block" />
 										<p:inputText type="text" class="form-control" id="pays"
 											placeholder="Pays" value="#{panierMB.paysClient}"
 											required="true" requiredMessage="Veuillez entrer votre pays" />
@@ -166,12 +176,16 @@
 
 
 									<div class="col-12 mb-3">
+									<h:message for="email"
+											errorStyle="color:red; display:block" />
 										<p:inputText type="email" class="form-control" id="email"
 											placeholder="Email" value="#{panierMB.client.email}"
 											required="true" requiredMessage="Veuillez entrer votre mail" />
 									</div>
 
 									<div class="col-12 mb-3">
+									<h:message for="tel"
+											errorStyle="color:red; display:block" />
 										<p:inputText type="text" class="form-control" id="tel"
 											placeholder="Numéro de téléphone"
 											value="#{panierMB.client.tel}" required="true"
