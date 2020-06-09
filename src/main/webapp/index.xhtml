@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 <head>
 
 <meta charset="UTF-8" />
@@ -87,8 +91,6 @@
 
 			<li><a href="shop.xhtml">E-Shop</a></li>
 
-			<li><a href="product-details.xhtml">Produit</a></li>
-
 			<li><a href="cart.xhtml">Panier</a></li>
 
 			<li><a href="checkout.xhtml">Paiement</a></li>
@@ -103,10 +105,9 @@
 
 		<div class="cart-fav-search mb-100">
 			<a href="cart.xhtml" class="cart-nav"><img
-				src="img/core-img/cart.png" alt="" /> Panier <span>(0)</span></a> 
-				
-				 <a href="#" class="search-nav"><img
-				src="img/core-img/search.png" alt="" /> Recherche</a>
+				src="img/core-img/cart.png" alt="" /> Panier <span>(0)</span></a> <a
+				href="#" class="search-nav"><img src="img/core-img/search.png"
+				alt="" /> Recherche</a>
 		</div>
 		<!-- Social Button -->
 
@@ -126,30 +127,30 @@
 				<!-- Single Catagory -->
 
 				<div class="single-products-catagory clearfix">
-					<a href="shop.xhtml"> <img src="#{produitMB.produit.photo}=" alt="" /> <!-- Hover Content -->
+					<a href="shop.xhtml"> <img src="img/bg-img/1.jpg" alt="" /> <!-- Hover Content -->
 
 						<div class="hover-content">
 
 							<div class="line" />
 
-							<p>From $180</p>
+							<p>A partir de &euro;800</p>
 
-							<h4>Modern Chair</h4>
+							<h4>Iphone 8</h4>
 						</div>
 					</a>
 				</div>
 				<!-- Single Catagory -->
 
 				<div class="single-products-catagory clearfix">
-					<a href="shop.xhtml"> <img src="#{produitMB.produit.photo}" alt="" /> <!-- Hover Content -->
+					<a href="shop.xhtml"> <img src="img/bg-img/2.jpg" alt="" /> <!-- Hover Content -->
 
 						<div class="hover-content">
 
 							<div class="line" />
 
-							<p>From $180</p>
+							<p>A partir de &euro;780</p>
 
-							<h4>Minimalistic Plant Pot</h4>
+							<h4>OnePlus 7T Pro</h4>
 						</div>
 					</a>
 				</div>
@@ -162,9 +163,9 @@
 
 							<div class="line" />
 
-							<p>From $180</p>
+							<p>A partir de &euro;180</p>
 
-							<h4>Modern Chair</h4>
+							<h4>Casque Anti-Bruit</h4>
 						</div>
 					</a>
 				</div>
@@ -177,9 +178,9 @@
 
 							<div class="line" />
 
-							<p>From $180</p>
+							<p>A partir de &euro;25</p>
 
-							<h4>Night Stand</h4>
+							<h4>Clavier</h4>
 						</div>
 					</a>
 				</div>
@@ -192,9 +193,9 @@
 
 							<div class="line" />
 
-							<p>From $18</p>
+							<p>A partir de &euro;1700</p>
 
-							<h4>Plant Pot</h4>
+							<h4>Imac 6G</h4>
 						</div>
 					</a>
 				</div>
@@ -207,9 +208,9 @@
 
 							<div class="line" />
 
-							<p>From $320</p>
+							<p>A partir de &euro;1320</p>
 
-							<h4>Small Table</h4>
+							<h4>Dell Fixe</h4>
 						</div>
 					</a>
 				</div>
@@ -222,9 +223,9 @@
 
 							<div class="line" />
 
-							<p>From $318</p>
+							<p>A partir de &euro;718</p>
 
-							<h4>Metallic Chair</h4>
+							<h4>Tablette Asus</h4>
 						</div>
 					</a>
 				</div>
@@ -237,9 +238,9 @@
 
 							<div class="line" />
 
-							<p>From $318</p>
+							<p>A partir de &euro;918</p>
 
-							<h4>Modern Rocking Chair</h4>
+							<h4>Station MSI</h4>
 						</div>
 					</a>
 				</div>
@@ -252,9 +253,9 @@
 
 							<div class="line" />
 
-							<p>From $318</p>
+							<p>A partir de &euro;720</p>
 
-							<h4>Home Deco</h4>
+							<h4>Tablette HP</h4>
 						</div>
 					</a>
 				</div>
@@ -291,9 +292,9 @@
 
 				<div class="newsletter-form mb-100">
 					<form action="#" method="post">
-						<input type="email" name="email" class="nl-email"
-							placeholder="Your E-mail" /> <input type="submit"
-							value="Subscribe" />
+
+						<input name="email" class="nl-email" placeholder="Your E-mail" />
+						<input type="submit" value="Subscribe" />
 					</form>
 				</div>
 			</div>
@@ -354,22 +355,19 @@
 							<ul class="navbar-nav ml-auto">
 
 								<li class="nav-item active"><a class="nav-link"
-									href="index.xhtml">Home</a></li>
+									href="index.xhtml">Accueil</a></li>
 
-								<li class="nav-item"><a class="nav-link" href="shop.xhtml">Shop</a>
+								<li class="nav-item"><a class="nav-link" href="shop.xhtml">E-Shop</a>
+								</li>
+
+								<li class="nav-item"><a class="nav-link" href="cart.xhtml">Panier</a>
 								</li>
 
 								<li class="nav-item"><a class="nav-link"
-									href="product-details.xhtml">Product</a></li>
-
-								<li class="nav-item"><a class="nav-link" href="cart.xhtml">Cart</a>
-								</li>
+									href="checkout.xhtml">Paiement</a></li>
 
 								<li class="nav-item"><a class="nav-link"
-									href="checkout.xhtml">Checkout</a></li>
-
-								<li class="nav-item"><a class="nav-link"
-									href="1_adminLogin.xhtml">Admin</a></li>
+									href="1_0_adminLogin.xhtml">Gestion</a></li>
 							</ul>
 						</div>
 						</nav>

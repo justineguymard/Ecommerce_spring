@@ -26,14 +26,15 @@ import fr.adaming.service.IProduitService;
 @SessionScoped
 public class PanierManagedBean implements Serializable {
 
-	private Map <Long, LigneCommande> mapProduitsPanier = new HashMap<Long, LigneCommande>();
-	private Collection <LigneCommande> listeLignesCommande;
+	private Map<Long, LigneCommande> mapProduitsPanier = new HashMap<Long, LigneCommande>();
+	private Collection<LigneCommande> listeLignesCommande;
 	private LigneCommande ligneCommande;
 	private Client client;
 	private Commande commande;
 	private Produit produit;
 	private Panier panier;
 	private List<Produit> listeProduits;
+	
 
 	@ManagedProperty(value = "#{panierService}")
 	private IPanierService panierService;
@@ -56,6 +57,7 @@ public class PanierManagedBean implements Serializable {
 		this.ligneCommande = new LigneCommande();
 		this.panier = new Panier();
 		this.listeProduits = produitService.getAllProduit();
+	
 	}
 
 	// getters et setters
@@ -135,6 +137,7 @@ public class PanierManagedBean implements Serializable {
 		this.mapProduitsPanier = mapProduitsPanier;
 	}
 
+
 	// methode metier
 
 	public String ajoutProduitPanier() {
@@ -142,107 +145,111 @@ public class PanierManagedBean implements Serializable {
 		System.out.println("\n ======= ID Produit :" + this.produit.getIdProduit());
 		System.out.println("\n =======  Quantite :" + this.ligneCommande.getQuantite());
 
-		//LigneCommande test = this.ligneCommande;
+		// LigneCommande test = this.ligneCommande;
 		int quantite = this.ligneCommande.getQuantite();
-		//anouvelle LC pour stocker la valeur 
+
+		if (quantite == 0) {
+			return "shop";
+		}
+		// anouvelle LC pour stocker la valeur
 		LigneCommande test = this.mapProduitsPanier.get(this.produit.getIdProduit());
-		
+
 		// si le produit n'a pas été commandé
 		if (test == null) {
 
 			this.produit.setSelectionne(true);
 			LigneCommande newProduitAjout = new LigneCommande();
-			this.produit=panierService.GetProduit(this.produit.getIdProduit());
+			this.produit = panierService.GetProduit(this.produit.getIdProduit());
 			newProduitAjout.setProduit(this.produit);
-			
+
 			System.out.println(this.produit);
-			
+
 			newProduitAjout.setQuantite(quantite);
 			newProduitAjout.setPrix(quantite * this.produit.getPrix());
 			this.mapProduitsPanier.put(this.produit.getIdProduit(), newProduitAjout);
 
-			this.listeLignesCommande= this.mapProduitsPanier.values();
+			this.listeLignesCommande = this.mapProduitsPanier.values();
 
-		}else{
-			//si le produit a deja été commande : ajustemeent de la quantite et du prix total
-			//quantite
+		} else {
+			// si le produit a deja été commande : ajustemeent de la quantite et du prix
+			// total
+			// quantite
 			test.setQuantite(this.ligneCommande.getQuantite() + test.getQuantite());
-			//prix
-			test.setPrix(test.getProduit().getPrix()* ( test.getQuantite() ));
-			//remplacer par la nouvelle ligne de commande
-			this.mapProduitsPanier.replace(this.produit.getIdProduit(),test);
-			//verification du produit de la ligne de commande
+			// prix
+			test.setPrix(test.getProduit().getPrix() * (test.getQuantite()));
+			// remplacer par la nouvelle ligne de commande
+			this.mapProduitsPanier.replace(this.produit.getIdProduit(), test);
+			// verification du produit de la ligne de commande
 			System.out.println(this.produit);
-			
-			this.listeLignesCommande= this.mapProduitsPanier.values();
-			
-			 
-			
+
+			this.listeLignesCommande = this.mapProduitsPanier.values();
+
 		}
-		//actualisation de la map
+		// actualisation de la map
 		this.listeLignesCommande = this.mapProduitsPanier.values();
-		
-		//verif de la map
+
+		// verif de la map
 		System.out.println("Boucle for:");
-        for (Map.Entry mapentry : this.mapProduitsPanier.entrySet()) {
-          System.out.println("clé: "+mapentry.getKey() + " | valeur: " + mapentry.getValue());
-          //verif de l'id produit
-          //ajustement de de l'id produit dans la ligne de commande par rapport à la clé enregistrée dans la map 
-          //parce qu'il gardait l'id du produit précédent et modfifiait les id des produits dans la map 
-          //la clé elle, est toujours celle de l'id du produit car c'est la valeur clé.
-          this.mapProduitsPanier.get(mapentry.getKey()).setProduit(this.panierService.GetProduit((long)mapentry.getKey().hashCode()));
-          System.out.println(this.mapProduitsPanier.get(mapentry.getKey()).getProduit().getIdProduit());
-        }
-		
+		for (Map.Entry mapentry : this.mapProduitsPanier.entrySet()) {
+			System.out.println("clé: " + mapentry.getKey() + " | valeur: " + mapentry.getValue());
+			// verif de l'id produit
+			// ajustement de de l'id produit dans la ligne de commande par rapport à la clé
+			// enregistrée dans la map
+			// parce qu'il gardait l'id du produit précédent et modfifiait les id des
+			// produits dans la map
+			// la clé elle, est toujours celle de l'id du produit car c'est la valeur clé.
+			this.mapProduitsPanier.get(mapentry.getKey())
+					.setProduit(this.panierService.GetProduit((long) mapentry.getKey().hashCode()));
+			System.out.println(this.mapProduitsPanier.get(mapentry.getKey()).getProduit().getIdProduit());
+		}
+
 		return "4_userPanierListe";
-	} //fin de la méthode
-	
-	
-	
-	
-	
-	public String enrCommande () {
-		
-	
+	} // fin de la méthode
+
+	public String enrCommande() {
+
 		System.out.println(this.client);
-	
+
 		this.panier.setMapProduitsPanier(this.mapProduitsPanier);
-		
+
 		panierService.enrCommande(this.panier, this.client);
 
-		System.out.println("taille du panier : "+this.panier.getMapProduitsPanier().size());
-		
-		
-		
-		
+		System.out.println("taille du panier : " + this.panier.getMapProduitsPanier().size());
+
 		return "4_userEnregistrement";
-		
+
 	}
-	
-	public String deleteLC () {
+
+	public String deleteLC() {
+
+		// verification
+		System.out.println("Suppr cette ligne :" + this.ligneCommande);
+		System.out.println("Suppr ce produit : " + this.ligneCommande.getProduit().getIdProduit());
+		System.out.println("Suppr ce produit : " + this.ligneCommande.getProduit());
+		// suppresion de la LC dans la map
+		this.ligneCommande.getProduit().setSelectionne(false);
 		
-		//verification
-		System.out.println("Suppr cette ligne :"+this.ligneCommande);
-		System.out.println("Suppr ce produit : "+this.ligneCommande.getProduit().getIdProduit());
-		//suppresion de la LC dans la map
+		System.out.println("Suppr ce produit : " + this.ligneCommande.getProduit());
 		this.mapProduitsPanier.remove(this.ligneCommande.getProduit().getIdProduit());
-		
-		
+
 		
 		
 		return "4_userAjoutProduitPanier";
-		
+
 	}
-	
-	public String clearMap () {
-		
+
+	public String clearMap() {
+
+		for (Map.Entry mapentry : this.mapProduitsPanier.entrySet()) {
+			System.out.println("clé: " + mapentry.getKey() + " | valeur: " + mapentry.getValue());
+
+			this.mapProduitsPanier.get(mapentry.getKey()).getProduit().setSelectionne(false);
+		}
 		this.mapProduitsPanier.clear();
-		
+
 		return "4_userPanierListe";
-		
+
 	}
-	
-	
-	
+
 
 }

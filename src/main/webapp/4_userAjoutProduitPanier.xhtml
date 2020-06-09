@@ -23,8 +23,8 @@
 				action="#{panierMB.ajoutProduitPanier}" />
 		</h:panelGrid>
 	</h:form>
-<br/>
-<br/>
+	<br />
+	<br />
 
 
 	<p:dataTable var="lc" value="#{panierMB.listeLignesCommande}">
@@ -33,15 +33,16 @@
     </f:facet>
 		<p:column style="width:2%">
 			<f:facet name="header">
-				<h:outputText value="ID LC"  />
+				<h:outputText value="ID LC" />
 			</f:facet>
 			<h:outputText value="#{lc.id}" />
 		</p:column>
-			<p:column style="width: 13%">
+		<p:column style="width: 13%">
 			<f:facet name="header">
 				<h:outputText value="Produit (ID)" />
 			</f:facet>
-			<h:outputText value="#{lc.produit.designation} (#{lc.produit.idProduit})" />
+			<h:outputText
+				value="#{lc.produit.designation} (#{lc.produit.idProduit})" />
 		</p:column>
 
 		<p:column style="width:5%">
@@ -52,7 +53,7 @@
 		</p:column>
 		<p:column style="width:2%">
 			<f:facet name="header">
-				<h:outputText value="Quantite"  />
+				<h:outputText value="Quantite" />
 			</f:facet>
 			<h:outputText value="#{lc.quantite}" />
 		</p:column>
@@ -66,31 +67,38 @@
 			<f:facet name="header">
 				<h:outputText value="Action" />
 			</f:facet>
-			<p:commandButton value="Retirer ce(s) produit(s)" action="#{panierMB.deleteLC}" >
-			<f:setPropertyActionListener value="#{lc}" target="#{panierMB.ligneCommande}"></f:setPropertyActionListener>
-			
-			
+			<p:commandButton value="Retirer ce(s) produit(s)"
+				action="#{panierMB.deleteLC}">
+				<f:setPropertyActionListener value="#{lc}"
+					target="#{panierMB.ligneCommande}"></f:setPropertyActionListener>
+
+
 			</p:commandButton>
 		</p:column>
-	  <f:facet name="footer">
-        <p:commandButton value="Vider le panier" action="#{panierMB.clearMap}" ></p:commandButton>
-    </f:facet>
+		<f:facet name="footer">
+			<p:commandButton value="Vider le panier"
+				action="#{panierMB.clearMap}"></p:commandButton>
+		</f:facet>
 
 	</p:dataTable>
-<br/>
-<br/>
-<p:commandButton value="Liste des produits" action="4_userProduitListe.xhtml" />
-<br/>
-<br/>
-<p:commandButton value="Produits commandés" action="4_userPanierListe.xhtml" />
-<br/>
-<br/>
-<p:commandButton value="Ajout de produits" action="4_userAjoutProduitPanier.xhtml" />
-<br/>
-<br/>
-<p:commandButton value="Enregistrement de la commande" action="4_userEnregistrement.xhtml" />
-<br/>
-<br/>
+	<br />
+	<br />
+	<p:commandButton value="Liste des produits"
+		action="4_userProduitListe.xhtml" />
+	<br />
+	<br />
+	<p:commandButton value="Produits commandés"
+		action="4_userPanierListe.xhtml" />
+	<br />
+	<br />
+	<p:commandButton value="Ajout de produits"
+		action="4_userAjoutProduitPanier.xhtml" />
+	<br />
+	<br />
+	<p:commandButton value="Enregistrement de la commande"
+		action="4_userEnregistrement.xhtml" />
+	<br />
+	<br />
 
 
 
