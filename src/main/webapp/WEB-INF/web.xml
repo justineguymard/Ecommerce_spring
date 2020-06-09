@@ -37,7 +37,7 @@
 
 	<!-- Definir la page de lancement de mon projet -->
 	<welcome-file-list>
-		<welcome-file>0_accueilSite.xhtml</welcome-file><!-- ======================================= -->
+		<welcome-file>index.xhtml</welcome-file><!-- ======================================= -->
 	</welcome-file-list>
 
 	<!-- Définir les commentaire des facelets -->

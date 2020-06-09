@@ -1,5 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+ xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 
 <head>
 <meta charset="UTF-8" />
@@ -115,22 +120,22 @@
 						<div class="checkout_details_area mt-50 clearfix">
 
 							<div class="cart-title">
-								<h2>Checkout</h2>
+								<h2>Enregistrement</h2>
 							</div>
 
-							<form action="#" method="post">
+							<h:form >
 								<div class="row">
 									<div class="col-md-6 mb-3">
-										<input type="text" class="form-control" id="first_name"
-											value="" placeholder="First Name" required="required" />
+										<h:inputText type="text" class="form-control" id="first_name"
+											value="#{panierMB.nomClient}" placeholder="Nom" required="required" />
 									</div>
 									<div class="col-md-6 mb-3">
-										<input type="text" class="form-control" id="last_name"
-											value="" placeholder="Last Name" required="required" />
+										<h:inputText type="text" class="form-control" id="last_name"
+											value="#{panierMB.prenomClient}" placeholder="Last Name" required="required" />
 									</div>
 									<div class="col-12 mb-3">
-										<input type="text" class="form-control" id="company"
-											placeholder="Company Name" value="" />
+										<h:inputText type="text" class="form-control" id="company"
+											placeholder="Adresse" value="" />
 									</div>
 									<div class="col-12 mb-3">
 										<input type="email" class="form-control" id="email"
@@ -183,7 +188,7 @@
 										</div>
 									</div>
 								</div>
-							</form>
+							</h:form>
 						</div>
 					</div>
 					<div class="col-12 col-lg-4">

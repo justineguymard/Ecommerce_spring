@@ -34,6 +34,13 @@ public class PanierManagedBean implements Serializable {
 	private Produit produit;
 	private Panier panier;
 	private List<Produit> listeProduits;
+	private String nomClient;
+	private String prenomClient;
+	private String rueClient;
+	private String cpClient;
+	private String villeClient;
+	private String paysClient;
+	
 	
 
 	@ManagedProperty(value = "#{panierService}")
@@ -137,9 +144,64 @@ public class PanierManagedBean implements Serializable {
 		this.mapProduitsPanier = mapProduitsPanier;
 	}
 
+	
+	
+
+
+	public String getNomClient() {
+		return nomClient;
+	}
+
+	public void setNomClient(String nomClient) {
+		this.nomClient = nomClient;
+	}
+
+	public String getPrenomClient() {
+		return prenomClient;
+	}
+
+	public void setPrenomClient(String prenomClient) {
+		this.prenomClient = prenomClient;
+	}
+
+	public String getRueClient() {
+		return rueClient;
+	}
+
+	public void setRueClient(String rueClient) {
+		this.rueClient = rueClient;
+	}
+
+	public String getCpClient() {
+		return cpClient;
+	}
+
+	public void setCpClient(String cpClient) {
+		this.cpClient = cpClient;
+	}
+
+	public String getVilleClient() {
+		return villeClient;
+	}
+
+	public void setVilleClient(String villeClient) {
+		this.villeClient = villeClient;
+	}
+
+	public String getPaysClient() {
+		return paysClient;
+	}
+
+	public void setPaysClient(String paysClient) {
+		this.paysClient = paysClient;
+	}
+
+	
+	
 
 	// methode metier
-
+	
+	
 	public String ajoutProduitPanier() {
 
 		System.out.println("\n ======= ID Produit :" + this.produit.getIdProduit());
@@ -208,6 +270,9 @@ public class PanierManagedBean implements Serializable {
 
 	public String enrCommande() {
 
+		this.client.setNomClient(this.nomClient+" "+this.prenomClient);
+		this.client.setAdresse(this.rueClient+ ", "+this.cpClient+" "+this.villeClient+", "+this.paysClient);
+		
 		System.out.println(this.client);
 
 		this.panier.setMapProduitsPanier(this.mapProduitsPanier);
