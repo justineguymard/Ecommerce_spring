@@ -18,7 +18,7 @@
 <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 <!-- Title  -->
 
-<title>Amado - Furniture Ecommerce Template | Shop</title>
+<title> Shop</title>
 <!-- Favicon  -->
 <link rel="icon" href="img/core-img/favicon.ico" />
 <!-- Core Style CSS -->
@@ -124,6 +124,8 @@
 
 		<div class="amado_product_area section-padding-100">
 
+
+
 			<p:dataTable class="table table-responsive"
 				style="text-align:center; width:100%" var="prod"
 				value="#{panierMB.listeProduits}">
@@ -151,7 +153,7 @@
 					</f:facet>
 					<h:outputText value="&#x2714;"
 						rendered="#{prod.selectionne == true}" />
-					<h:outputText value=""
+								<h:outputText value=""
 						rendered="#{prod.selectionne == false}" />
 
 				</p:column>
@@ -170,13 +172,9 @@
 						<h:outputText value="Action" />
 					</f:facet>
 					<h:form style="text-align :center">
-						<h:commandButton value="voir produit"
-							action="4_userAjoutProduitPanier">
-							<f:setPropertyActionListener value="#{prod}"
-								target="#{panierMB.produit}"></f:setPropertyActionListener>
-						</h:commandButton>
+						
 
-						<h:commandButton value="voir produit test"
+						<h:commandButton value="voir produit"
 							action="product-details.xhtml">
 							<f:setPropertyActionListener value="#{prod}"
 								target="#{panierMB.produit}"></f:setPropertyActionListener>

@@ -8,9 +8,11 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import org.hibernate.Session;
 
@@ -40,6 +42,7 @@ public class PanierManagedBean implements Serializable {
 	private String cpClient;
 	private String villeClient;
 	private String paysClient;
+	private double total;
 	
 	
 
@@ -55,6 +58,7 @@ public class PanierManagedBean implements Serializable {
 	}
 
 	@PostConstruct
+	
 	public void init() {
 		this.mapProduitsPanier = new HashMap<Long, LigneCommande>();
 		this.listeLignesCommande = new ArrayList<LigneCommande>();
@@ -64,6 +68,7 @@ public class PanierManagedBean implements Serializable {
 		this.ligneCommande = new LigneCommande();
 		this.panier = new Panier();
 		this.listeProduits = produitService.getAllProduit();
+		this.total = 0.0;
 	
 	}
 
@@ -148,6 +153,10 @@ public class PanierManagedBean implements Serializable {
 	
 
 
+	public void setTotal(double total) {
+		this.total = total;
+	}
+
 	public String getNomClient() {
 		return nomClient;
 	}
@@ -211,6 +220,8 @@ public class PanierManagedBean implements Serializable {
 		int quantite = this.ligneCommande.getQuantite();
 
 		if (quantite == 0) {
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage("Ajout impossible, veuillez vérifier la quantité choisie."));
 			return "shop";
 		}
 		// anouvelle LC pour stocker la valeur
@@ -264,8 +275,10 @@ public class PanierManagedBean implements Serializable {
 					.setProduit(this.panierService.GetProduit((long) mapentry.getKey().hashCode()));
 			System.out.println(this.mapProduitsPanier.get(mapentry.getKey()).getProduit().getIdProduit());
 		}
-
-		return "4_userPanierListe";
+		
+		
+		this.total = getTotal();
+		return "cart";
 	} // fin de la méthode
 
 	public String enrCommande() {
@@ -280,8 +293,19 @@ public class PanierManagedBean implements Serializable {
 		panierService.enrCommande(this.panier, this.client);
 
 		System.out.println("taille du panier : " + this.panier.getMapProduitsPanier().size());
+		
+		for (Map.Entry mapentry : this.mapProduitsPanier.entrySet()) {
+			System.out.println("clé: " + mapentry.getKey() + " | valeur: " + mapentry.getValue());
 
-		return "4_userEnregistrement";
+			this.mapProduitsPanier.get(mapentry.getKey()).getProduit().setSelectionne(false);
+		}
+		this.mapProduitsPanier.clear();
+		
+		
+		FacesContext.getCurrentInstance().addMessage(null,
+				new FacesMessage("Commande enregistrée."));
+		init();
+		return "checkout";
 
 	}
 
@@ -297,9 +321,11 @@ public class PanierManagedBean implements Serializable {
 		System.out.println("Suppr ce produit : " + this.ligneCommande.getProduit());
 		this.mapProduitsPanier.remove(this.ligneCommande.getProduit().getIdProduit());
 
-		
-		
-		return "4_userAjoutProduitPanier";
+		FacesContext.getCurrentInstance().addMessage(null,
+				new FacesMessage("Ce(s) produit(s) ont été retiré(s) du panier."));
+	
+		this.total =getTotal();
+		return "cart";
 
 	}
 
@@ -312,8 +338,27 @@ public class PanierManagedBean implements Serializable {
 		}
 		this.mapProduitsPanier.clear();
 
-		return "4_userPanierListe";
+		FacesContext.getCurrentInstance().addMessage(null,
+				new FacesMessage("Votre panier a été vidé."));
+		//this.total = getTotal();
+		
+		return "cart";
+		
 
+	}
+	
+	public double getTotal () {
+		
+		this.total =0.0;
+		for (Map.Entry mapentry : this.mapProduitsPanier.entrySet()) {
+			System.out.println("clé: " + mapentry.getKey() + " | valeur: " + mapentry.getValue());
+
+			this.total += this.mapProduitsPanier.get(mapentry.getKey()).getPrix();
+			System.out.println("total :"+total);
+			
+		}
+		System.out.println("montant total : "+total);
+		return total;
 	}
 
 
