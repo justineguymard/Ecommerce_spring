@@ -13,26 +13,44 @@
 <h:body>
 
 	<h:form>
-		<p:breadCrumb>
-			<p:menuitem value="Consultation" url="1_adminConsultation.xhtml" />
-			<p:menuitem value="AjoutCategorie" url="1_adminAjoutCategorie.xhtml" />
-			<p:menuitem value="AjoutProduit" url="1_adminAjoutProduit.xhtml" />
-			<p:menuitem value="ModifCategorie" url="1_adminModifCategorie.xhtml" />
-			<p:menuitem value="ModifProduit" url="1_adminModifProduit.xhtml" />
-			<p:menuitem value="SupprCategorie" url="1_adminSupprCategorie.xhtml" />
-			<p:menuitem value="SupprProduit" url="1_adminSupprProduit.xhtml" />
-		</p:breadCrumb>
+		<p:growl id="messages" />
+		<p:menubar>
+			<p:menuitem value="" url="1_1_adminConsultation.xhtml"
+				icon="ui-icon-home" update="messages" />
+
+			<p:submenu label="Catégorie" icon="ui-icon-folder-collapsed">
+				<p:menuitem value="Ajouter" url="1_2_adminAjoutCategorie.xhtml"
+					update="messages" />
+				<p:menuitem value="Modifier" url="1_3_adminModifCategorie.xhtml"
+					update="messages" />
+			</p:submenu>
+
+			<p:submenu label="Produit" icon="ui-icon-document">
+				<p:menuitem value="Ajouter" url="1_2_adminAjoutProduit.xhtml"
+					update="messages" />
+				<p:menuitem value="Modifier" url="1_3_adminModifProduit.xhtml"
+					update="messages" />
+			</p:submenu>
+
+			<p:submenu label="Client" icon="ui-icon-person">
+				<p:menuitem value="Modifier" url="1_3_adminModifClient.xhtml"
+					update="messages" />
+			</p:submenu>
+		</p:menubar>
 	</h:form>
 
 	<h:form>
 		<h:panelGrid columns="2">
-			ID: <p:inputText value="#{categorieMB.categorie.idCategorie}" />
+			<p:outputText value="Id:" />
+			<p:inputText value="#{categorieMB.categorie.idCategorie}" />
 
-			<h:commandButton value="Supprimer" action="#{categorieMB.deleteCategorie}" />
+			<h:commandButton value="Supprimer"
+				action="#{categorieMB.deleteCategorie}" />
 		</h:panelGrid>
 	</h:form>
 
 	<h:messages />
+	
 </h:body>
 
 </html>
