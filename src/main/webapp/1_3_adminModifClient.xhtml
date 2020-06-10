@@ -4,17 +4,70 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 
-<ui:composition template="">
-	<ui:define name="header">
-	    Add your header here or delete to use the default
-	</ui:define>
-	<ui:define name="content">
-	    Add your content here or delete to use the default
-	</ui:define>
-	<ui:define name="footer">
-	    Add your footer here or delete to use the default
-	</ui:define>
-</ui:composition>
+<h:head>
+	<title>Facelet Modif</title>
+</h:head>
+<h:body>
+
+<h:form>
+	<p:growl id="messages" />
+	<p:menubar>
+		<p:menuitem value="" url="1_1_adminConsultation.xhtml"
+			icon="ui-icon-home" update="messages" />
+
+		<p:submenu label="Catégorie" icon="ui-icon-folder-collapsed">
+			<p:menuitem value="Ajouter" url="1_2_adminAjoutCategorie.xhtml"
+				update="messages" />
+			<p:menuitem value="Modifier" url="1_3_adminModifCategorie.xhtml"
+				update="messages" />
+			<p:menuitem value="Supprimer" url="1_4_adminSupprCategorie.xhtml"
+				update="messages" />
+		</p:submenu>
+
+		<p:submenu label="Produit" icon="ui-icon-document">
+			<p:menuitem value="Ajouter" url="1_2_adminAjoutProduit.xhtml"
+				update="messages" />
+			<p:menuitem value="Modifier" url="1_3_adminModifProduit.xhtml"
+				update="messages" />
+			<p:menuitem value="Supprimer" url="1_4_adminSupprProduit.xhtml"
+				update="messages" />
+		</p:submenu>
+
+		<p:submenu label="Client" icon="ui-icon-person">
+			<p:menuitem value="Modifier" url="1_3_adminModifClient.xhtml"
+				update="messages" />
+			<p:menuitem value="Supprimer" url="1_4_adminSupprClient.xhtml"
+				update="messages" />
+		</p:submenu>
+	</p:menubar>
+</h:form>
+
+<h:form>
+	<h:panelGrid columns="2">
+		<p:outputText value="Id:" />
+		<p:inputText value="#{clientMB.client.idClient}" />
+
+		<p:outputText value="Nom:" />
+		<p:inputText value="#{clientMB.client.nomClient}" />
+
+		<p:outputText value="Adresse:" />
+		<p:inputText value="#{clientMB.client.adresse}" />
+		
+		<p:outputText value="Email:" />
+		<p:inputText value="#{clientMB.client.email}" />
+
+		<p:outputText value="Tel:" />
+		<p:inputText value="#{clientMB.client.tel}" />
+
+		<h:commandButton value="Modifier"
+			action="#{clientMB.updateClient}" />
+	</h:panelGrid>
+</h:form>
+
+<h:messages />
+
+</h:body>
 </html>
