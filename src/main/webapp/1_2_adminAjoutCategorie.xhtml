@@ -13,15 +13,36 @@
 <h:body>
 
 	<h:form>
-		<p:breadCrumb>
-			<p:menuitem value="Consultation" url="1_adminConsultation.xhtml" />
-			<p:menuitem value="AjoutCategorie" url="1_adminAjoutCategorie.xhtml" />
-			<p:menuitem value="AjoutProduit" url="1_adminAjoutProduit.xhtml" />
-			<p:menuitem value="ModifCategorie" url="1_adminModifCategorie.xhtml" />
-			<p:menuitem value="ModifProduit" url="1_adminModifProduit.xhtml" />
-			<p:menuitem value="SupprCategorie" url="1_adminSupprCategorie.xhtml" />
-			<p:menuitem value="SupprProduit" url="1_adminSupprProduit.xhtml" />
-		</p:breadCrumb>
+		<p:growl id="messages" />
+		<p:menubar>
+			<p:menuitem value="" url="1_1_adminConsultation.xhtml"
+				icon="ui-icon-home" update="messages" />
+
+			<p:submenu label="Catégorie" icon="ui-icon-folder-collapsed">
+				<p:menuitem value="Ajouter" url="1_2_adminAjoutCategorie.xhtml"
+					update="messages" />
+				<p:menuitem value="Modifier" url="1_3_adminModifCategorie.xhtml"
+					update="messages" />
+				<p:menuitem value="Supprimer" url="1_4_adminSupprCategorie.xhtml"
+					update="messages" />
+			</p:submenu>
+
+			<p:submenu label="Produit" icon="ui-icon-document">
+				<p:menuitem value="Ajouter" url="1_2_adminAjoutProduit.xhtml"
+					update="messages" />
+				<p:menuitem value="Modifier" url="1_3_adminModifProduit.xhtml"
+					update="messages" />
+				<p:menuitem value="Supprimer" url="1_4_adminSupprProduit.xhtml"
+					update="messages" />
+			</p:submenu>
+
+			<p:submenu label="Client" icon="ui-icon-person">
+				<p:menuitem value="Modifier" url="1_3_adminModifClient.xhtml"
+					update="messages" />
+				<p:menuitem value="Supprimer" url="1_4_adminSupprClient.xhtml"
+					update="messages" />
+			</p:submenu>
+		</p:menubar>
 	</h:form>
 
 
@@ -29,27 +50,26 @@
 		<h:panelGrid columns="2">
 			<p:outputText value="Nom:" />
 			<p:inputText value="#{categorieMB.categorie.nomCategorie}" />
-			
+
 			<p:outputText value="Photo:" />
-			<p:inputText value="#{categorieMB.categorie.photo}" />
-			
+			<p:fileUpload value="#{fileUploadManagedBean.file}"  mode="simple" update="messages" sizeLimit="100000" fileLimit="3"
+				allowTypes="/(\.|\/)(gif|jpe?g|png)$/"/>
+				<p:separator/>
+				<h:commandButton value="Upload" action="#{uploadMB.uploadFile}"></h:commandButton>
+			<p:growl id="messages" showDetail="true" />
+
 			<p:outputText value="Description:" />
-			<p:inputText value="#{categorieMB.categorie.description}" />
-			
+			<p:inputTextarea value="#{categorieMB.categorie.description}" rows="5"
+				cols="30" counter="display" maxlength="10"
+				counterTemplate="{0} characters remaining." autoResize="false" />
+			<br />
+			<h:outputText id="display" />
+
 			<h:commandButton value="Ajouter" action="#{categorieMB.addCategorie}"></h:commandButton>
 		</h:panelGrid>
 	</h:form>
-	
-	<hr/>
 
-	<h:form enctype="multipart/form-data">
-		<p:fileUpload value="#{fileUploadView.file}" mode="simple"
-			skinSimple="true" />
-		<br />
-		<p:commandButton value="Submit" ajax="false"
-			action="#{fileUploadView.upload}" disabled="true" />
-	</h:form>
-
+	<h:messages />
 
 </h:body>
 
